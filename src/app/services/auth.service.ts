@@ -12,7 +12,7 @@ export class AuthService {
   private readonly baseUrl: string;
 
   constructor(private http: HttpClient) {
-    this.baseUrl = environment.fourPawsApi;
+    this.baseUrl = environment.api;
   }
 
   getToken(loginRequest: LoginRequest): Observable<TokenResponse> {
