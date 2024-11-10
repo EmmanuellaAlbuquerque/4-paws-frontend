@@ -6,6 +6,7 @@ import { Error } from '../../models/Error';
 import { LoginRequest } from '../../models/LoginRequest';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { KeyValuePipe, NgIf, TitleCasePipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +28,7 @@ export class LoginComponent {
 
   private authService: AuthService = inject(AuthService);
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private navigator: Router) {
     this.loginForm = this.fb.group({
       email: [''],
       password: ['']
@@ -47,8 +48,8 @@ export class LoginComponent {
     this.authService.getToken(loginRequest).subscribe(
       {
         next: (response) => {
-          localStorage.setItem('access_token', JSON.stringify(response.token));
-
+          localStorage.setItem('access_token', response.token);
+          this.navigator.navigate(['/']);
         },
         error: (error: HttpErrorResponse) => {
           const errorResponse: ErrorResponse = error.error as ErrorResponse;
