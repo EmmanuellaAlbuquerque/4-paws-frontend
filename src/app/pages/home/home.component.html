@@ -2,3 +2,9 @@
   <h1>Olá, {{ profile.role | titlecase }} {{ profile.name.split(" ")[0]  }}.</h1>
 }
 
+@if (homeContentComponentByRole) {
+  <ng-container
+    [ngComponentOutlet]="homeContentComponentByRole"
+  ></ng-container>
+}
+
