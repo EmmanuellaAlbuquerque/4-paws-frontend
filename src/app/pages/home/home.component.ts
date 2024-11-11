@@ -1,10 +1,10 @@
 import { Component, inject, OnInit, Type } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProfileService } from '../../services/profile.service';
+import { ProfileService } from '../../services/profile/profile.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ProfileResponse } from '../../models/ProfileResponse';
 import { NgComponentOutlet, TitleCasePipe } from '@angular/common';
-import { RoleComponentMappingService } from '../../services/role-component-mapping.service';
+import { RoleComponentMappingService } from '../../services/role-component-mapping/role-component-mapping.service';
 import { HomeContentComponent } from '../../interfaces/home-content-component';
 
 @Component({
