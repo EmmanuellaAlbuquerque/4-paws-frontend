@@ -50,18 +50,43 @@
   margin-top: 1rem;
 }
 
+.login-container .input-container {
+  display: grid;
+  place-items: center;
+  width: 100%;
+}
+
+.login-container .input-container #email {
+  margin-bottom: 1rem;
+}
+
+.login-container #email-input,
+.login-container .p-input-icon-left {
+  width: 75%;
+}
+
+.login-container #email {
+  width: 100%;
+}
+
+:host ::ng-deep .login-container #password .p-password,
+:host ::ng-deep .login-container #password .p-password-input {
+  width: 100%;
+}
+
 .login-container .forget-password {
   align-self: flex-end;
   margin-right: 2rem;
   margin-top: 0;
 }
 
-//:host ::ng-deep .login-container .forget-password .p-button {
-//  color: var(--text-color-secondary);
-//}
-
 .subtitle {
   margin: 0 !important;
   text-align: center;
   font-size: 1.25rem;
 }
+
+.message-error {
+  color: var(--red-600);
+}
+
