@@ -33,18 +33,35 @@
   overflow: hidden;
 }
 
+.right {
+  display: grid;
+  place-items: center;
+}
+
 .container .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  width: 50%;
 }
 
 .login-container > * {
   margin-top: 1rem;
 }
 
-:host ::ng-deep .login-container .p-button {
-  background-color: #F3AD61;
-  border-color: #F3AD61;
+.login-container .forget-password {
+  align-self: flex-end;
+  margin-right: 2rem;
+  margin-top: 0;
+}
+
+//:host ::ng-deep .login-container .forget-password .p-button {
+//  color: var(--text-color-secondary);
+//}
+
+.subtitle {
+  margin: 0 !important;
+  text-align: center;
+  font-size: 1.25rem;
 }
