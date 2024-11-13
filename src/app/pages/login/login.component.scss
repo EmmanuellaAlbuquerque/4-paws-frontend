@@ -1,0 +1,50 @@
+:host {
+  display: block;
+  margin: -8px;
+}
+
+.p-input-icon-left {
+  position: relative;
+}
+
+.p-input-icon-left > i {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  z-index: 1;
+}
+
+:host ::ng-deep .p-input-icon-left .p-password .p-inputtext {
+  padding-left: 2.5rem;
+}
+
+#email-input #email {
+  padding-right: 2.5rem;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.half {
+  flex: 1;
+  max-width: 50%;
+  overflow: hidden;
+}
+
+.container .login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.login-container > * {
+  margin-top: 1rem;
+}
+
+:host ::ng-deep .login-container .p-button {
+  background-color: #F3AD61;
+  border-color: #F3AD61;
+}

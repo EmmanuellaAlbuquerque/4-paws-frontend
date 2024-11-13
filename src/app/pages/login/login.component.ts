@@ -4,9 +4,16 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorResponse } from '../../models/ErrorResponse';
 import { Error } from '../../models/Error';
 import { LoginRequest } from '../../models/LoginRequest';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { KeyValuePipe, NgIf, TitleCasePipe } from '@angular/common';
 import { Router } from '@angular/router';
+import { IconInputComponent } from '../../components/icon-input/icon-input.component';
+import { ButtonModule } from 'primeng/button';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
+import { InputTextModule } from 'primeng/inputtext';
+import { PasswordModule } from 'primeng/password';
+import { ImageModule } from 'primeng/image';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +22,14 @@ import { Router } from '@angular/router';
     ReactiveFormsModule,
     NgIf,
     KeyValuePipe,
-    TitleCasePipe
+    TitleCasePipe,
+    IconInputComponent,
+    ButtonModule,
+    IconFieldModule,
+    InputIconModule,
+    InputTextModule,
+    PasswordModule,
+    ImageModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
@@ -25,22 +39,36 @@ export class LoginComponent {
   loginForm: FormGroup;
   errors: Error;
   hasAnyErrors: boolean = false;
+  loading: boolean = false;
 
   private authService: AuthService = inject(AuthService);
 
   constructor(private fb: FormBuilder, private navigator: Router) {
     this.loginForm = this.fb.group({
-      email: [''],
-      password: ['']
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]]
     });
 
     this.errors = {};
   }
 
+  get email() {
+    return this.loginForm.get('email');
+  }
+
+  get password() {
+    return this.loginForm.get('password');
+  }
+
   onSubmit() {
+    this.loading = true;
+
     if (this.loginForm.valid) {
       const loginRequest: LoginRequest = this.loginForm.value;
       this.getToken(loginRequest);
+    }
+    else {
+      this.loading = false;
     }
   }
 
@@ -48,6 +76,7 @@ export class LoginComponent {
     this.authService.getToken(loginRequest).subscribe(
       {
         next: (response) => {
+          this.loading = false;
           localStorage.setItem('access_token', response.token);
           this.navigator.navigate(['/']);
         },
@@ -56,6 +85,7 @@ export class LoginComponent {
           this.errors = errorResponse.errors;
           console.log(errorResponse);
           this.hasAnyErrors = true;
+          this.loading = false;
         }
       }
     );

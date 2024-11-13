@@ -8,11 +8,35 @@
 }
 
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <label for="email">Email: </label>
-  <input id="email" type="email" formControlName="email" placeholder="Email" required>
+  <div class="container">
+    <div class="half">
+      <p-image
+        src="LoginBackground4Paws.png"
+        alt="Imagem de fundo"
+        width="100%"
+        height="100%"
+      />
+    </div>
 
-  <label for="password">Senha: </label>
-  <input id="password" type="password" formControlName="password" placeholder="Senha" required>
+    <div class="half login-container">
+      <h1>Faça Login</h1>
 
-  <button type="submit">Login</button>
+      <p-iconField iconPosition="left" id="email-input">
+        <p-inputIcon styleClass="pi pi-envelope" />
+        <input id="email" type="email" formControlName="email" placeholder="Email" pInputText required />
+      </p-iconField>
+
+      <!--  <div *ngIf="email?.invalid && (email?.dirty || !email?.untouched)">-->
+      <!--    Invalid email address-->
+      <!--  </div>-->
+
+      <div class="p-input-icon-left">
+        <i class="pi pi-lock"></i>
+        <p-password formControlName="password" [toggleMask]="true" placeholder="Senha" />
+      </div>
+
+<!--      <button type="submit">Login</button>-->
+      <p-button class="login-button" [loading]="loading" (onClick)="onSubmit()" label="Login" [disabled]="loginForm.invalid" />
+    </div>
+  </div>
 </form>
