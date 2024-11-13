@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { TokenResponse } from '../../models/TokenResponse';
 import { LoginRequest } from '../../models/LoginRequest';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +12,16 @@ import { LoginRequest } from '../../models/LoginRequest';
 export class AuthService {
   private readonly baseUrl: string;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private navigator: Router) {
     this.baseUrl = environment.api;
   }
 
-  getToken(loginRequest: LoginRequest): Observable<TokenResponse> {
+  login(loginRequest: LoginRequest): Observable<TokenResponse> {
     return this.http.post<TokenResponse>(this.baseUrl + 'api/v1/auth/login', loginRequest);
+  }
+
+  logout(): void {
+    localStorage.removeItem('access_token');
+    this.navigator.navigate(['/login']);
   }
 }

@@ -65,15 +65,15 @@ export class LoginComponent {
 
     if (this.loginForm.valid) {
       const loginRequest: LoginRequest = this.loginForm.value;
-      this.getToken(loginRequest);
+      this.handleLogin(loginRequest);
     }
     else {
       this.loading = false;
     }
   }
 
-  getToken(loginRequest: LoginRequest) {
-    this.authService.getToken(loginRequest).subscribe(
+  handleLogin(loginRequest: LoginRequest) {
+    this.authService.login(loginRequest).subscribe(
       {
         next: (response) => {
           this.loading = false;
