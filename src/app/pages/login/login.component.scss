@@ -1,3 +1,5 @@
+$layout-mobile: 768px;
+
 :host {
   display: block;
   margin: -8px;
@@ -90,3 +92,24 @@
   color: var(--red-600);
 }
 
+@media (max-width: $layout-mobile) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+  }
+
+  .half {
+    max-width: 100%;
+  }
+
+  .login-container {
+    margin-bottom: 5rem;
+  }
+
+  .login-container #email-input,
+  .login-container .p-input-icon-left {
+    width: 100%;
+  }
+}
