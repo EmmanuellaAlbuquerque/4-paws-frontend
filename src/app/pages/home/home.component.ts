@@ -56,4 +56,8 @@ export class HomeComponent implements OnInit {
       }
     );
   }
+
+  handleProfileClick(): void {
+    this.navigator.navigate(['profile']);
+  }
 }
