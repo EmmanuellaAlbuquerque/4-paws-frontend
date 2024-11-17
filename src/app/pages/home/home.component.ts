@@ -6,13 +6,17 @@ import { ProfileResponse } from '../../models/ProfileResponse';
 import { NgComponentOutlet, TitleCasePipe } from '@angular/common';
 import { RoleComponentMappingService } from '../../services/role-component-mapping/role-component-mapping.service';
 import { HomeContentComponent } from '../../interfaces/home-content-component';
+import { ImageModule } from 'primeng/image';
+import { AvatarModule } from 'primeng/avatar';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
     TitleCasePipe,
-    NgComponentOutlet
+    NgComponentOutlet,
+    ImageModule,
+    AvatarModule
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'

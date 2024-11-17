@@ -1,5 +1,12 @@
 @if (profile) {
-  <h1>Olá, {{ profile.role | titlecase }} {{ profile.name.split(" ")[0]  }}.</h1>
+  <div class="profile">
+    <p-avatar
+      icon="pi pi-user"
+      size="xlarge"
+      shape="circle"
+    />
+    <h1>Olá, {{ profile.role | titlecase }} {{ profile.name.split(" ")[0]  }}.</h1>
+  </div>
 }
 
 @if (homeContentComponentByRole) {
