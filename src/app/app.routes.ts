@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 export const routes: Routes = [
   {
@@ -10,8 +11,8 @@ export const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: '**',
-    redirectTo: 'not-found',
+    path: 'not-found',
+    component: NotFoundComponent
   },
   {
     path: 'login',
@@ -20,5 +21,10 @@ export const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent
-  }
+  },
+  //** THE ORDER MATTERS **(ALL OTHER ROUTES) SHOULD BE AT THE END **//
+  {
+    path: '**', // ** should be the last route in the list
+    redirectTo: 'not-found',
+  },
 ];
