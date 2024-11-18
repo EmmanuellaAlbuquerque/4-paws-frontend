@@ -25,7 +25,6 @@ export class HomeComponent implements OnInit {
 
   profile: ProfileResponse | null = null;
   private profileService: ProfileService = inject(ProfileService);
-  private access_token = localStorage.getItem("access_token");
   homeContentComponentByRole: Type<HomeContentComponent> | null = null;
 
   constructor(
@@ -34,11 +33,6 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (this.access_token == null) {
-      this.navigator.navigate(['login']);
-      return;
-    }
-
     this.getProfile();
   }
 
