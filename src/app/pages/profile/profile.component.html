@@ -1,5 +1,42 @@
-<h1>Profile {{profile?.name}}</h1>
+<div class="profile-container">
+  <div>
+    <div class="profile-header">
+      <p-button icon="pi pi-arrow-left" label="Voltar" [text]="true" severity="secondary" (onClick)="handleGoBack()" />
+      <h1><i class="pi pi-user" style="font-size: 2rem; margin-right: 1rem"></i>Dados Pessoais</h1>
+    </div>
 
-<p>{{ profile?.role }}</p>
-<p>{{ profile?.cpf }}</p>
-<p>{{ profile?.email }}</p>
+    <h3>User: {{profile?.name}}</h3>
+
+    <p class="profile-field">
+      <b>
+        <i class="pi pi-briefcase"></i>
+        Cargo:
+      </b>
+      {{ profile?.role }}
+    </p>
+
+    @if(profile?.role === 'VETERINARIO') {
+      <p><b>Especialidade:</b> {{ profile?.specialty }}</p>
+
+      <p><b>CRMV:</b> {{ profile?.crmv }}</p>
+
+      <p><b>UF:</b> {{ profile?.uf }}</p>
+    }
+
+    <p class="profile-field">
+      <b>
+        <i class="pi pi-id-card"></i>
+        CPF:
+      </b>
+      {{ profile?.cpf }}
+    </p>
+
+    <p class="profile-field">
+      <b>
+        <i class="pi pi-at"></i>
+        Email:
+      </b>
+      {{ profile?.email }}
+    </p>
+  </div>
+</div>

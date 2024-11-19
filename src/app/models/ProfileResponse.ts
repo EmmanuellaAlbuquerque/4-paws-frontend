@@ -3,4 +3,8 @@ export type ProfileResponse = {
   name: string;
   cpf: string;
   role: string;
+
+  specialty?: string;
+  crmv?: number;
+  uf?: string;
 }
