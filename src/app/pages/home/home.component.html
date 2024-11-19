@@ -1,18 +1,20 @@
-@if (profile) {
-  <div class="profile">
-    <p-avatar
-      icon="pi pi-user"
-      size="xlarge"
-      shape="circle"
-      (click)="handleProfileClick()"
-    />
-    <h1>Olá, {{ profile.role | titlecase }} {{ profile.name.split(" ")[0]  }}.</h1>
-  </div>
-}
+<div class="home-container">
+  @if (profile) {
+    <div class="profile">
+      <p-avatar
+        icon="pi pi-user"
+        size="xlarge"
+        shape="circle"
+        (click)="handleProfileClick()"
+      />
+      <h1>Olá, {{ profile.role | titlecase }} {{ profile.name.split(" ")[0]  }}.</h1>
+    </div>
+  }
 
-@if (homeContentComponentByRole) {
-  <ng-container
-    [ngComponentOutlet]="homeContentComponentByRole"
-  ></ng-container>
-}
+  @if (homeContentComponentByRole) {
+    <ng-container
+      [ngComponentOutlet]="homeContentComponentByRole"
+    ></ng-container>
+  }
+</div>
 
