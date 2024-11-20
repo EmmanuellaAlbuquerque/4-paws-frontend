@@ -4,12 +4,14 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ProfileResponse } from '../../models/ProfileResponse';
 import { ButtonModule } from 'primeng/button';
 import { Router } from '@angular/router';
+import { GoBackButtonComponent } from '../../shared/go-back-button/go-back-button.component';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
   imports: [
-    ButtonModule
+    ButtonModule,
+    GoBackButtonComponent
   ],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
