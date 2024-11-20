@@ -1,1 +1,8 @@
-<h1>RECEPTIONIST HOME CONTENT</h1>
+
+@if(tutorResponseErrorStatus) {
+  <p-messages [(value)]="errorMessageValue" [enableService]="false" />
+}
+
+<input type="text" pInputText [(ngModel)]="tutorCPF" placeholder="Pesquisar Tutor do Pet por CPF">
+<p-button icon="pi pi-search" (onClick)="handleTutorSearch()" />
+

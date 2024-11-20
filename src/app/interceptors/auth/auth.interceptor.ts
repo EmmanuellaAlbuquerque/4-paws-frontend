@@ -30,14 +30,7 @@ export function AuthInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn):
         headers: req.headers.set('Authorization', `Bearer ${access_token}`)
       });
 
-      next(cloned_req).subscribe(
-        {
-          error: (error: HttpErrorResponse) => {
-            authService.logout();
-            console.log(error);
-          }
-        }
-      );
+      next(cloned_req);
 
       return next(cloned_req);
     }
