@@ -3,6 +3,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { TutorComponent } from './pages/tutor/tutor.component';
 
 export const routes: Routes = [
   {
@@ -21,6 +22,10 @@ export const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent
+  },
+  {
+    path: 'tutor',
+    component: TutorComponent
   },
   //** THE ORDER MATTERS **(ALL OTHER ROUTES) SHOULD BE AT THE END **//
   {
