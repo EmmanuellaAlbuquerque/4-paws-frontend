@@ -1,1 +1,22 @@
-<p>tutor works!</p>
+
+<app-go-back-button />
+
+<h3>Tutor:</h3>
+{{ tutorData?.name }}
+
+<p><b>Telefone: </b> {{ tutorData?.phone }}</p>
+<p><b>CPF: </b> {{ tutorData?.cpf }}</p>
+<p><b>Endereço</b></p>
+<p><b>Rua:</b> {{ tutorData?.address?.street }}</p>
+<p><b>Número:</b> {{ tutorData?.address?.number }}</p>
+<p><b>Bairro:</b> {{ tutorData?.address?.neighborhood }}</p>
+
+<p-button label="Cadastrar Consulta" [outlined]="true" />
+
+<h3>Pets</h3>
+
+@for (pet of tutorData?.pets; track pet.id) {
+  {{ pet.name }} |
+}
+
+<p-button label="Adicionar Pet" [link]="true" icon="pi pi-plus-circle" iconPos="top" class="add-pet-button" />

@@ -3,7 +3,6 @@ import { HomeContentComponent } from '../../interfaces/home-content-component';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
-import { TutorSearchResponse } from '../../models/TutorSearchResponse';
 import { TutorsService } from '../../services/tutors/tutors.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MessagesModule } from 'primeng/messages';
@@ -25,7 +24,6 @@ import { Router } from '@angular/router';
 export class ReceptionistHomeContentComponent implements HomeContentComponent, OnInit {
 
   tutorCPF: string = '';
-  // tutorData?: TutorSearchResponse;
   tutorResponseErrorStatus: boolean = false;
   errorMessageValue: Message[] = [
     {
