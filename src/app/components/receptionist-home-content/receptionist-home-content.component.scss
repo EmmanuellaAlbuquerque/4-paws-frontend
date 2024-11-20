@@ -1,0 +1,21 @@
+.receptionist-container {
+  //border: 1px solid red;
+}
+
+.container-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 4rem;
+}
+
+.container-content input {
+  margin-right: 1rem;
+  width: 60%;
+}
+
+:host ::ng-deep .receptionist-container .p-element .p-button-outlined {
+  /* topo | direita | inferior | esquerda */
+  margin: 5rem 0 0 5rem;
+}

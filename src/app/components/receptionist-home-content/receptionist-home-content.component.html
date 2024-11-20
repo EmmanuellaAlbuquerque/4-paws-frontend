@@ -1,8 +1,13 @@
 
-@if(tutorResponseErrorStatus) {
-  <p-messages [(value)]="errorMessageValue" [enableService]="false" />
-}
+<div class="receptionist-container">
+  @if(tutorResponseErrorStatus) {
+    <p-messages [(value)]="errorMessageValue" [enableService]="false" />
+  }
 
-<input type="text" pInputText [(ngModel)]="tutorCPF" placeholder="Pesquisar Tutor do Pet por CPF">
-<p-button icon="pi pi-search" (onClick)="handleTutorSearch()" />
+  <div class="container-content">
+    <input type="text" pInputText [(ngModel)]="tutorCPF" placeholder="Pesquisar Tutor do Pet por CPF">
+    <p-button icon="pi pi-search" (onClick)="handleTutorSearch()" />
+  </div>
 
+  <p-button label="Cadastrar Tutor" [outlined]="true" />
+</div>

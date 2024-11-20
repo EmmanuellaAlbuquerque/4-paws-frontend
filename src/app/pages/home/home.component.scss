@@ -2,6 +2,7 @@
 
 .profile {
   display: flex;
+  margin-left: 5rem;
 }
 
 .profile .p-element {
@@ -12,5 +13,7 @@
 .home-container {
   display: flex;
   flex-direction: column;
-  margin: 2rem;
+
+  /* topo | horizontal | inferior */
+  margin: 5rem 2rem 2rem;
 }
