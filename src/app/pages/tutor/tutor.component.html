@@ -1,22 +1,35 @@
 
-<app-go-back-button />
+<div class="tutor-container">
+  <app-go-back-button />
 
-<h3>Tutor:</h3>
-{{ tutorData?.name }}
+  <div class="tutor-data-content">
+    <div class="principal">
+      <div class="tutor-personal-details">
+        <h2>Tutor:</h2>
+        {{ tutorData?.name }}
 
-<p><b>Telefone: </b> {{ tutorData?.phone }}</p>
-<p><b>CPF: </b> {{ tutorData?.cpf }}</p>
-<p><b>Endereço</b></p>
-<p><b>Rua:</b> {{ tutorData?.address?.street }}</p>
-<p><b>Número:</b> {{ tutorData?.address?.number }}</p>
-<p><b>Bairro:</b> {{ tutorData?.address?.neighborhood }}</p>
+        <!--      <p><b>Telefone: </b> {{ tutorData?.phone }}</p>-->
+        <!--      <p><b>CPF: </b> {{ tutorData?.cpf }}</p>-->
+        <!--      <p><b>Endereço</b></p>-->
+        <!--      <p><b>Rua:</b> {{ tutorData?.address?.street }}</p>-->
+        <!--      <p><b>Número:</b> {{ tutorData?.address?.number }}</p>-->
+        <!--      <p><b>Bairro:</b> {{ tutorData?.address?.neighborhood }}</p>-->
+      </div>
 
-<p-button label="Cadastrar Consulta" [outlined]="true" />
+      <p-button label="Cadastrar Consulta" [outlined]="true" />
+    </div>
 
-<h3>Pets</h3>
+    <h2>Pets</h2>
 
-@for (pet of tutorData?.pets; track pet.id) {
-  {{ pet.name }} |
-}
+    <div class="pets-container">
+      @for (pet of tutorData?.pets; track pet.id) {
+        <div class="pet-block">
+          <div class="pet-image"></div>
+          <b>{{ pet.name }}</b>
+        </div>
+      }
 
-<p-button label="Adicionar Pet" [link]="true" icon="pi pi-plus-circle" iconPos="top" class="add-pet-button" />
+      <p-button label="Adicionar Pet" [link]="true" icon="pi pi-plus-circle" iconPos="top" class="add-pet-button" />
+    </div>
+  </div>
+</div>

@@ -1,4 +1,48 @@
 
 :host ::ng-deep .add-pet-button .p-button-icon {
-  font-size: 4rem;
+  font-size: 6rem;
+  margin-bottom: 12px;
+}
+
+.tutor-container {
+  display: flex;
+  flex-direction: column;
+  margin: 5rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+.tutor-personal-details {
+  margin-bottom: 4rem;
+}
+
+.tutor-container .principal {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tutor-data-content {
+  margin-top: 1rem;
+  margin-left: 4rem;
+  margin-right: 4rem;
+}
+
+.pets-container {
+  //border: 1px solid blue;
+  display: flex;
+}
+
+.pets-container .pet-image {
+  border: 8px solid #6b7280;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+}
+
+.pets-container .pet-block {
+  //border: 1px solid red;
+  display: grid;
+  place-items: center;
+  padding: 12px 20px;
 }
