@@ -46,7 +46,7 @@ export class ReceptionistHomeContentComponent implements HomeContentComponent, O
     this.tutorsService.tutorExistsByCPF(this.tutorCPF).subscribe({
       next: response => {
         console.log(response);
-        this.navigator.navigate([`/tutor`], {
+        this.navigator.navigate([`/tutors`], {
           queryParams: {
             cpf: this.tutorCPF
           }

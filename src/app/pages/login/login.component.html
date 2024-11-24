@@ -28,7 +28,14 @@
         <div class="input-container">
           <p-iconField iconPosition="left" id="email-input">
             <p-inputIcon styleClass="pi pi-envelope" />
-            <input id="email" type="email" formControlName="email" placeholder="Email" pInputText required />
+            <input
+              id="email"
+              type="email"
+              formControlName="email"
+              placeholder="Email"
+              pInputText
+              required
+            />
           </p-iconField>
 
           <div class="p-input-icon-left">
@@ -45,7 +52,13 @@
 
         <p-button class="forget-password" label="Esqueceu a senha?" [link]="true" />
 
-        <p-button class="login-button" [loading]="loading" (onClick)="onSubmit()" label="Login" [disabled]="loginForm.invalid" />
+        <p-button
+          class="login-button"
+          [loading]="loading"
+          (onClick)="onSubmit()"
+          label="Login"
+          [disabled]="loginForm.invalid"
+        />
       </div>
     </div>
   </div>

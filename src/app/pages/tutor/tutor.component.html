@@ -7,16 +7,27 @@
       <div class="tutor-personal-details">
         <h2>Tutor:</h2>
         {{ tutorData?.name }}
+        <p-divider />
 
-        <!--      <p><b>Telefone: </b> {{ tutorData?.phone }}</p>-->
-        <!--      <p><b>CPF: </b> {{ tutorData?.cpf }}</p>-->
-        <!--      <p><b>Endereço</b></p>-->
-        <!--      <p><b>Rua:</b> {{ tutorData?.address?.street }}</p>-->
-        <!--      <p><b>Número:</b> {{ tutorData?.address?.number }}</p>-->
-        <!--      <p><b>Bairro:</b> {{ tutorData?.address?.neighborhood }}</p>-->
+        <h3>Dados Gerais</h3>
+
+        <div class="personal-details-content">
+          <div>
+            <h5><b>{{ 'Telefone' | uppercase }}</b> <br><br> {{ tutorData?.phone }}</h5>
+            <h5><b>{{ 'CPF' | uppercase }}</b>  <br><br> {{ tutorData?.cpf }}</h5>
+          </div>
+          <div>
+            <h5><b>{{ 'Endereço' | uppercase }}</b>
+
+              <br><br>
+
+              {{ tutorData?.address?.street }}, {{ tutorData?.address?.number }}, {{ tutorData?.address?.neighborhood }}
+            </h5>
+          </div>
+        </div>
       </div>
 
-      <p-button label="Cadastrar Consulta" [outlined]="true" />
+<!--      <p-button label="Cadastrar Consulta" [outlined]="true" />-->
     </div>
 
     <h2>Pets</h2>
@@ -29,7 +40,14 @@
         </div>
       }
 
-      <p-button label="Adicionar Pet" [link]="true" icon="pi pi-plus-circle" iconPos="top" class="add-pet-button" />
+      <p-button
+        label="Adicionar Pet"
+        [link]="true"
+        icon="pi pi-plus-circle"
+        iconPos="top"
+        class="add-pet-button"
+        (onClick)="handleAddPetButton()"
+      />
     </div>
   </div>
 </div>

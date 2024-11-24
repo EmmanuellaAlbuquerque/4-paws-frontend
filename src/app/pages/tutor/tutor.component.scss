@@ -13,12 +13,22 @@
 }
 
 .tutor-personal-details {
-  margin-bottom: 4rem;
+  //margin-bottom: 4rem;
+  //width: 70%;
+}
+
+.tutor-personal-details b {
+  color: #9199a2;
+}
+
+.tutor-personal-details .personal-details-content {
+  display: flex;
+  justify-content: space-between;
 }
 
 .tutor-container .principal {
-  display: flex;
-  justify-content: space-between;
+  //display: flex;
+  //justify-content: space-between;
 }
 
 .tutor-data-content {

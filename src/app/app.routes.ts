@@ -24,7 +24,7 @@ export const routes: Routes = [
     component: ProfileComponent
   },
   {
-    path: 'tutor',
+    path: 'tutors',
     component: TutorComponent
   },
   //** THE ORDER MATTERS **(ALL OTHER ROUTES) SHOULD BE AT THE END **//
