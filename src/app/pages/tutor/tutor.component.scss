@@ -2,6 +2,11 @@
 :host ::ng-deep .add-pet-button .p-button-icon {
   font-size: 6rem;
   margin-bottom: 12px;
+  margin-top: 0.5rem;
+}
+
+.add-pet-button {
+  padding: 0 20px;
 }
 
 .tutor-container {

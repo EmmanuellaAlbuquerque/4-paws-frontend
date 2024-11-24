@@ -34,10 +34,15 @@
 
     <div class="pets-container">
       @for (pet of tutorData?.pets; track pet.id) {
-        <div class="pet-block">
-          <div class="pet-image"></div>
-          <b>{{ pet.name }}</b>
-        </div>
+        <p-button
+          [link]="true"
+          (onClick)="handlePetClick(pet.id)"
+        >
+          <div class="pet-block">
+            <div class="pet-image"></div>
+            <b>{{ pet.name }}</b>
+          </div>
+        </p-button>
       }
 
       <p-button
