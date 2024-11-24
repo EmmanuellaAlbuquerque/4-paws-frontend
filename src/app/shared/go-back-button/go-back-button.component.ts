@@ -1,6 +1,7 @@
 import { Component, inject, Input } from '@angular/core';
 import { Button } from "primeng/button";
 import { Router } from '@angular/router';
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-go-back-button',
@@ -14,9 +15,17 @@ import { Router } from '@angular/router';
 export class GoBackButtonComponent {
 
   @Input() path: string = '/';
+  @Input() goBack: boolean = false;
   private navigator: Router = inject(Router);
 
+  constructor(private location: Location) {}
+
   handleGoBack(): void {
-    this.navigator.navigate([this.path]);
+    if (this.goBack) {
+      this.location.back();
+    }
+    else {
+      this.navigator.navigate([this.path]);
+    }
   }
 }
