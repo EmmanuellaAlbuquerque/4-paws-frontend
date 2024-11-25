@@ -7,6 +7,7 @@
 
 .add-pet-button {
   padding: 0 20px;
+  margin-top: 1rem;
 }
 
 .tutor-container {
@@ -47,16 +48,21 @@
   display: flex;
 }
 
-.pets-container .pet-image {
-  border: 8px solid #6b7280;
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
+.pets-container .pet-block .pet-image {
+  border: 8px solid #FFE9C2;
   margin-bottom: 0.5rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(243,173,97,1) 35%, rgba(255,233,194,1) 100%);
+  //width: 96px;
+  //height: 96px;
+}
+
+:host ::ng-deep  .pets-container .pet-block .pet-image img {
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .pets-container .pet-block {
-  //border: 1px solid red;
   display: grid;
   place-items: center;
   padding: 12px 20px;

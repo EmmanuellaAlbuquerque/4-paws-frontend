@@ -39,7 +39,22 @@ export class PetComponent implements OnInit {
 
   ngOnInit() {
     this.getPet();
+  }
 
+  getPet(): void {
+    this.petService.getPetById(this.petId).subscribe({
+      next: response => {
+        console.log(response);
+        this.petData = response;
+        this.initializeMenu();
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log(error);
+      }
+    })
+  }
+
+  private initializeMenu() {
     this.items = [
       {
         label: 'Voltar',
@@ -52,23 +67,18 @@ export class PetComponent implements OnInit {
         label: 'Cadastrar Consulta',
         icon: 'pi pi-calendar-plus',
         routerLink: '/appointments',
+        queryParams: {
+          petId: this.petData?.id,
+          tutorId: this.petData?.tutorId
+        },
+        queryParamsHandling: 'replace'
       },
       {
         label: 'Editar Pet',
-        icon: 'pi pi-star'
+        icon: 'pi pi-star',
+        routerLink: '/pets/edit',
+        queryParamsHandling: 'preserve'
       }
     ];
-  }
-
-  getPet(): void {
-    this.petService.getPetById(this.petId).subscribe({
-      next: response => {
-        console.log(response);
-        this.petData = response;
-      },
-      error: (error: HttpErrorResponse) => {
-        console.log(error);
-      }
-    })
   }
 }

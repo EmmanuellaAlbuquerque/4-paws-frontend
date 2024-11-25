@@ -7,6 +7,7 @@ import { TutorSearchResponse } from '../../models/TutorSearchResponse';
 import { Button } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
 import { UpperCasePipe } from '@angular/common';
+import { ImageModule } from 'primeng/image';
 
 @Component({
   selector: 'app-tutor',
@@ -15,7 +16,8 @@ import { UpperCasePipe } from '@angular/common';
     GoBackButtonComponent,
     Button,
     DividerModule,
-    UpperCasePipe
+    UpperCasePipe,
+    ImageModule
   ],
   templateUrl: './tutor.component.html',
   styleUrl: './tutor.component.scss'
