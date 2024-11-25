@@ -4,9 +4,11 @@ import { PetsService } from '../../services/pets/pets.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { PetResponse } from '../../models/PetResponse';
 import { Button } from 'primeng/button';
-import { TitleCasePipe, UpperCasePipe } from '@angular/common';
+import { Location, TitleCasePipe, UpperCasePipe } from '@angular/common';
 import { GoBackButtonComponent } from '../../shared/go-back-button/go-back-button.component';
 import { CardModule } from 'primeng/card';
+import { MenubarModule } from 'primeng/menubar';
+import { MenuItem, MenuItemCommandEvent } from 'primeng/api';
 
 @Component({
   selector: 'app-pet',
@@ -16,7 +18,8 @@ import { CardModule } from 'primeng/card';
     UpperCasePipe,
     GoBackButtonComponent,
     CardModule,
-    TitleCasePipe
+    TitleCasePipe,
+    MenubarModule
   ],
   templateUrl: './pet.component.html',
   styleUrl: './pet.component.scss'
@@ -26,8 +29,9 @@ export class PetComponent implements OnInit {
   private petId: string = '';
   petData?: PetResponse;
   private petService: PetsService = inject(PetsService);
+  items: MenuItem[] | undefined;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private location: Location) {
     this.route.queryParams.subscribe(params => {
       this.petId = params['petId'];
     });
@@ -35,6 +39,25 @@ export class PetComponent implements OnInit {
 
   ngOnInit() {
     this.getPet();
+
+    this.items = [
+      {
+        label: 'Voltar',
+        icon: 'pi pi-arrow-left',
+        command: () => {
+          this.location.back();
+        }
+      },
+      {
+        label: 'Cadastrar Consulta',
+        icon: 'pi pi-calendar-plus',
+        routerLink: '/appointments',
+      },
+      {
+        label: 'Editar Pet',
+        icon: 'pi pi-star'
+      }
+    ];
   }
 
   getPet(): void {
