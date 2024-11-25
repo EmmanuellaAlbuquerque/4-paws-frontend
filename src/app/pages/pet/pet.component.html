@@ -1,1 +1,50 @@
-<p>pet works!</p>
+
+<div class="go-back-button">
+  <app-go-back-button [goBack]=true />
+</div>
+
+<div class="pet-container">
+  <h1>Perfil do Pet: <span style="color: #F3AD61;">{{ petData?.name }}</span></h1>
+
+  <div class="pet-content">
+<!--    <p-button label="Cadastrar Consulta" [outlined]="true" />-->
+
+    <h2>Dados do Pet</h2>
+
+    <div class="data">
+      <div class="personal-info">
+
+        <div class="pet-field" style="background-color: #F8EFE8; border: 1px solid #F8EFE8;">
+          <h1>♀️</h1>
+          <span style="color: #8f8781;">Gênero</span>
+          <h2 style="color: #5f5852;">{{ petData?.sex | titlecase }}</h2>
+        </div>
+
+        <div class="pet-field" style="background-color: #F0F3FF; border: 1px solid #F0F3FF;">
+          <h1>🐾</h1>
+          <span style="color: #878a95;">Idade</span>
+          <h2 style="color: #575a64;">{{ petData?.age }} anos</h2>
+        </div>
+
+        <div class="pet-field" style="background-color: #E5F8FF; border: 1px solid #E5F8FF;">
+          <h1>⚖️</h1>
+          <span style="color: #7d8e94;">Peso</span>
+          <h2 style="color: #4d5e63;">{{ petData?.weight }} kg</h2>
+        </div>
+
+        <div class="pet-field" style="background-color: #E2F5CB; border: 1px solid #E2F5CB;">
+          <h1>🐱‍</h1>
+          <span style="color: #7c8d68;">Raça</span>
+          <h2 style="color: #4d5e3b;">{{ petData?.breed | titlecase }}</h2>
+        </div>
+
+        <div class="pet-field" style="background-color: #FFE9C2; border: 1px solid #FFE9C2;">
+          <h1>🐈</h1>
+          <span style="color: #968460;">Espécie</span>
+          <h2 style="color: #665635;">{{ petData?.specie | titlecase }}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

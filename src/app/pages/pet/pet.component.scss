@@ -1,0 +1,44 @@
+.go-back-button {
+  margin-left: 50px;
+  margin-top: 10px;
+}
+
+.pet-container {
+  display: grid;
+  place-items: center;
+  margin-top: 2rem;
+}
+
+.pet-container .pet-content {
+  width: 50%;
+  margin-top: 1rem;
+}
+
+.pet-container .pet-content .data {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.pet-container .pet-content .data .personal-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 190px));
+}
+
+.pet-container .pet-content .pet-field {
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1rem 5rem 1rem 1rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+
+.pet-content .pet-field b {
+  color: #9199a2;
+}
+
+.pet-container .pet-content .pet-field h3 span {
+  font-size: .8rem;
+}
