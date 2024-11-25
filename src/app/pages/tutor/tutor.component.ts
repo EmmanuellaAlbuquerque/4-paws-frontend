@@ -21,6 +21,7 @@ import { UpperCasePipe } from '@angular/common';
   styleUrl: './tutor.component.scss'
 })
 export class TutorComponent implements OnInit {
+
   private cpf: string = '';
   tutorData?: TutorSearchResponse;
   private tutorService: TutorsService = inject(TutorsService);
@@ -29,7 +30,7 @@ export class TutorComponent implements OnInit {
   constructor(private route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => {
       this.cpf = params['cpf'];
-    })
+    });
   }
 
   ngOnInit(): void {
