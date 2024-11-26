@@ -74,7 +74,7 @@ export class PetComponent implements OnInit {
         queryParamsHandling: 'replace'
       },
       {
-        label: 'Editar Pet',
+        label: 'Editar Dados',
         icon: 'pi pi-star',
         routerLink: '/pets/edit',
         queryParamsHandling: 'preserve'

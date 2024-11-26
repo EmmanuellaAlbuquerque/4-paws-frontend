@@ -1,5 +1,7 @@
 //** BASE STYLE FOR HOME COMPONENT **//
 
+$layout-mobile: 768px;
+
 .profile {
   display: flex;
   margin-left: 5rem;
@@ -16,4 +18,10 @@
 
   /* topo | horizontal | inferior */
   margin: 5rem 2rem 2rem;
+}
+
+@media (max-width: $layout-mobile) {
+  .profile {
+    margin-left: 0;
+  }
 }

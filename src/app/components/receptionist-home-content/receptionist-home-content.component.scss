@@ -1,3 +1,5 @@
+$layout-mobile: 768px;
+
 .receptionist-container {
   //border: 1px solid red;
 }
@@ -18,4 +20,10 @@
 :host ::ng-deep .receptionist-container .p-element .p-button-outlined {
   /* topo | direita | inferior | esquerda */
   margin: 5rem 0 0 5rem;
+}
+
+@media (max-width: $layout-mobile) {
+  .container-content input {
+    width: 100%;
+  }
 }

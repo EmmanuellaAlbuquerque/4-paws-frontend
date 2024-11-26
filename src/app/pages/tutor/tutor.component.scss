@@ -1,3 +1,4 @@
+$layout-mobile: 768px;
 
 :host ::ng-deep .add-pet-button .p-button-icon {
   font-size: 6rem;
@@ -44,8 +45,8 @@
 }
 
 .pets-container {
-  //border: 1px solid blue;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
 }
 
 .pets-container .pet-block .pet-image {
@@ -66,4 +67,16 @@
   display: grid;
   place-items: center;
   padding: 12px 20px;
+}
+
+@media (max-width: $layout-mobile) {
+  .tutor-container {
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .tutor-data-content {
+    margin: 1rem;
+  }
 }

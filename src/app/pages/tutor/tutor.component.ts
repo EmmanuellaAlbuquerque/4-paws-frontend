@@ -52,7 +52,7 @@ export class TutorComponent implements OnInit {
   }
 
   handleAddPetButton(): void {
-    this.navigator.navigate(['pets'])
+    this.navigator.navigate(['pets/new'])
   }
 
   handlePetClick(petId: string): void {
