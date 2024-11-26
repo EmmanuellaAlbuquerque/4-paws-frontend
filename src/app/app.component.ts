@@ -3,11 +3,12 @@ import { RouterOutlet } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { PrimeNGConfig } from 'primeng/api';
 import { MenubarModule } from "primeng/menubar";
+import { ImageModule } from 'primeng/image';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-    imports: [RouterOutlet, LoginComponent, MenubarModule],
+  imports: [RouterOutlet, LoginComponent, MenubarModule, ImageModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
