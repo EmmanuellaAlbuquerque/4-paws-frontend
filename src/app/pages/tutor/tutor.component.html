@@ -75,14 +75,14 @@
           </p-button>
         }
 
-        <div class="add-pet-button">
-          <i class="pi pi-plus-circle" style="font-size: 4rem;"></i>
-          <p-button
-            label="Adicionar Pet"
-            [link]="true"
-            (onClick)="handleAddPetButton()"
-          />
-        </div>
+        <p-button
+          label="Adicionar Pet"
+          [link]="true"
+          (onClick)="handleAddPetButton()"
+          class="add-pet-button"
+        >
+          <i class="pi pi-plus-circle" style="font-size: 4rem; color: #4E3D4D; margin-bottom: 0.5rem;"></i>
+        </p-button>
       </div>
     </div>
   </div>

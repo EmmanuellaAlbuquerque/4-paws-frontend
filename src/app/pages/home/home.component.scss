@@ -7,6 +7,14 @@ $layout-mobile: 768px;
   margin-left: 5rem;
 }
 
+:host ::ng-deep .profile .p-avatar {
+
+}
+
+:host ::ng-deep .profile .p-avatar:hover {
+  border: 2px solid var(--primary-color);
+}
+
 .profile .p-element {
   margin-right: 1rem;
   cursor: pointer;

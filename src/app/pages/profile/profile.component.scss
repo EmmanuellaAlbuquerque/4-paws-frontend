@@ -1,19 +1,40 @@
 
 .profile-container {
-  display: grid;
-  place-items: center;
   margin-top: 2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
 .profile-field {
   border: 1px solid #d3d3df;
   background-color: #EFF2F6;
-  padding: 0.5rem;
+  padding: 1rem;
   border-radius: 1rem;
+
+  display: flex;
+  align-items: center;
+}
+
+.profile-field b {
+  display: flex;
+  align-items: center;
+  padding-right: 0.5rem;
+}
+
+.profile-field i {
+  font-size: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .profile-header h1 {
-  text-align: center;
   margin-top: 2rem;
   margin-bottom: 2rem;
+}
+
+.profile-header h1 .tutor-avatar {
+  margin-right: 0.5rem;
+}
+
+.profile-content {
 }

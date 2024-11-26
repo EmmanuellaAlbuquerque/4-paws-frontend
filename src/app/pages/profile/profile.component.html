@@ -2,41 +2,49 @@
   <div>
     <div class="profile-header">
       <app-go-back-button />
-      <h1><i class="pi pi-user" style="font-size: 2rem; margin-right: 1rem"></i>Dados Pessoais</h1>
+        <h1>
+          <p-avatar
+            [label]="(profile?.name || '4Paws').charAt(0)"
+            size="xlarge"
+            shape="circle"
+            class="tutor-avatar"
+          />
+          {{profile?.name}}
+        </h1>
     </div>
 
-    <h3>User: {{profile?.name}}</h3>
+    <div class="profile-content">
+      <p class="profile-field">
+        <b>
+          <i class="pi pi-briefcase"></i>
+          Cargo:
+        </b>
+       <span>{{ profile?.role }}</span>
+      </p>
 
-    <p class="profile-field">
-      <b>
-        <i class="pi pi-briefcase"></i>
-        Cargo:
-      </b>
-      {{ profile?.role }}
-    </p>
+      @if(profile?.role === 'VETERINARIO') {
+        <p><b>Especialidade:</b> {{ profile?.specialty }}</p>
 
-    @if(profile?.role === 'VETERINARIO') {
-      <p><b>Especialidade:</b> {{ profile?.specialty }}</p>
+        <p><b>CRMV:</b> {{ profile?.crmv }}</p>
 
-      <p><b>CRMV:</b> {{ profile?.crmv }}</p>
+        <p><b>UF:</b> {{ profile?.uf }}</p>
+      }
 
-      <p><b>UF:</b> {{ profile?.uf }}</p>
-    }
+      <p class="profile-field">
+        <b>
+          <i class="pi pi-id-card"></i>
+          CPF:
+        </b>
+        {{ profile?.cpf }}
+      </p>
 
-    <p class="profile-field">
-      <b>
-        <i class="pi pi-id-card"></i>
-        CPF:
-      </b>
-      {{ profile?.cpf }}
-    </p>
-
-    <p class="profile-field">
-      <b>
-        <i class="pi pi-at"></i>
-        Email:
-      </b>
-      {{ profile?.email }}
-    </p>
-  </div>
+      <p class="profile-field">
+        <b>
+          <i class="pi pi-at"></i>
+          Email:
+        </b>
+        {{ profile?.email }}
+      </p>
+    </div>
+    </div>
 </div>

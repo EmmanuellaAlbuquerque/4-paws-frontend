@@ -23,6 +23,15 @@ h4 {
   border-radius: 8px;
 }
 
+:host ::ng-deep .add-pet-button .p-button-link {
+  display: flex;
+  flex-direction: column;
+
+  span {
+    color: #4E3D4D;
+  }
+}
+
 .content {
   padding: 1rem;
   margin-left: 0.5rem;

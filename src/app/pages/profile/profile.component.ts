@@ -5,13 +5,15 @@ import { ProfileResponse } from '../../models/ProfileResponse';
 import { ButtonModule } from 'primeng/button';
 import { Router } from '@angular/router';
 import { GoBackButtonComponent } from '../../shared/go-back-button/go-back-button.component';
+import { AvatarModule } from 'primeng/avatar';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
   imports: [
     ButtonModule,
-    GoBackButtonComponent
+    GoBackButtonComponent,
+    AvatarModule
   ],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
