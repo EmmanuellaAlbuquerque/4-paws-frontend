@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { PrimeNGConfig } from 'primeng/api';
+import { MenubarModule } from "primeng/menubar";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoginComponent],
+    imports: [RouterOutlet, LoginComponent, MenubarModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

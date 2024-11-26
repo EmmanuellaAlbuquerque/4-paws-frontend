@@ -3,13 +3,20 @@
 <!--  <app-go-back-button [goBack]=true />-->
 <!--</div>-->
 
-<p-menubar [model]="items" />
+<!--<p-menubar [model]="items" />-->
 
 <div class="pet-container">
-  <h1>Perfil do Pet: <span style="color: #F3AD61;">{{ petData?.name }}</span></h1>
+
+  <div class="go-back-button">
+    <app-go-back-button [goBack]=true />
+  </div>
+
+  <h1 style="color: #4E3D4D;">
+    {{ petData?.name }}
+  </h1>
 
   <div class="pet-content">
-    <h2>Dados do Pet</h2>
+    <h2 class="title">Dados do Pet</h2>
 
     <div class="data">
       <div class="personal-info">
@@ -44,7 +51,13 @@
           <h2 style="color: #665635;">{{ petData?.specie | titlecase }}</h2>
         </div>
       </div>
+
+      <p-button label="Editar dados" class="edit-pet-button" icon="pi pi-pen-to-square" />
     </div>
+
+    <h2 class="title">Consultas</h2>
+
+    <p-button label="Agendar Consulta" [outlined]="true" icon="pi pi-calendar-plus" size="large" />
   </div>
 </div>
 

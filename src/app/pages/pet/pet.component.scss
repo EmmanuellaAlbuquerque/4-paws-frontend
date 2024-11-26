@@ -1,8 +1,13 @@
 $layout-mobile: 768px;
+$subtitle: #dcdce6;
+
+//border: 1px solid $subtitle;
+//border-radius: 8px;
 
 .go-back-button {
   margin-left: 50px;
   margin-top: 10px;
+  justify-self: self-start;
 }
 
 .pet-container {
@@ -12,8 +17,13 @@ $layout-mobile: 768px;
 }
 
 .pet-container .pet-content {
-  width: 50%;
+  width: 70%;
   margin-top: 1rem;
+}
+
+.pet-container .pet-content .title {
+  border-left: 8px solid var(--primary-color);
+  padding-left: 1rem;
 }
 
 .pet-container .pet-content .data {
@@ -22,9 +32,14 @@ $layout-mobile: 768px;
   text-align: center;
 }
 
+.pet-container .pet-content .data .edit-pet-button {
+  align-self: flex-end;
+  margin-right: 1rem;
+}
+
 .pet-container .pet-content .data .personal-info {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 190px));
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
 }
 
 .pet-container .pet-content .pet-field {
