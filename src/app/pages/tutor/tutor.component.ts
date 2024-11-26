@@ -8,6 +8,7 @@ import { Button } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
 import { UpperCasePipe } from '@angular/common';
 import { ImageModule } from 'primeng/image';
+import { AvatarModule } from 'primeng/avatar';
 
 @Component({
   selector: 'app-tutor',
@@ -17,7 +18,8 @@ import { ImageModule } from 'primeng/image';
     Button,
     DividerModule,
     UpperCasePipe,
-    ImageModule
+    ImageModule,
+    AvatarModule
   ],
   templateUrl: './tutor.component.html',
   styleUrl: './tutor.component.scss'

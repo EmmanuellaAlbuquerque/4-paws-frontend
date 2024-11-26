@@ -5,59 +5,85 @@
   <div class="tutor-data-content">
     <div class="principal">
       <div class="tutor-personal-details">
-        <h2>Tutor:</h2>
-        {{ tutorData?.name }}
-        <p-divider />
-
-        <h3>Dados Gerais</h3>
-
-        <div class="personal-details-content">
-          <div>
-            <h5><b>{{ 'Telefone' | uppercase }}</b> <br><br> {{ tutorData?.phone }}</h5>
-            <h5><b>{{ 'CPF' | uppercase }}</b>  <br><br> {{ tutorData?.cpf }}</h5>
+        <div class="tutor-header">
+        <div class="tutor-info">
+          <p-avatar
+            [label]="(tutorData?.name || '4Paws').charAt(0)"
+            size="xlarge"
+            shape="circle"
+            class="tutor-avatar"
+          />
+          <div class="tutor-identification">
+            <p>Tutor</p>
+            <h3>{{ tutorData?.name }}</h3>
           </div>
-          <div>
-            <h5><b>{{ 'Endereço' | uppercase }}</b>
+        </div>
 
-              <br><br>
+          <p-button
+            class="edit-button"
+            label="Editar"
+            icon="pi pi-user-edit"
+            [link]="true"
+          />
+        </div>
 
-              {{ tutorData?.address?.street }}, {{ tutorData?.address?.number }}, {{ tutorData?.address?.neighborhood }}
-            </h5>
+        <div class="content">
+          <h4>Dados Gerais</h4>
+
+          <div class="personal-details-content">
+            <div class="box-content">
+              <i class="pi pi-mobile icons"></i>
+              <h5><b>{{ 'Telefone' | uppercase }}</b> <br><br> {{ tutorData?.phone }}</h5>
+            </div>
+
+            <div class="box-content">
+              <i class="pi pi-address-book icons"></i>
+              <h5><b>{{ 'CPF' | uppercase }}</b>  <br><br> {{ tutorData?.cpf }}</h5>
+            </div>
+
+            <div class="box-content">
+              <i class="pi pi-map-marker icons"></i>
+              <h5><b>{{ 'Endereço' | uppercase }}</b><br><br> {{ tutorData?.address?.street }}, {{ tutorData?.address?.number }}, {{ tutorData?.address?.neighborhood }}</h5>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <h2>Pets</h2>
+    <p-divider />
 
-    <div class="pets-container">
-      @for (pet of tutorData?.pets; track pet.id) {
-        <p-button
-          [link]="true"
-          (onClick)="handlePetClick(pet.id)"
-        >
-          <div class="pet-block">
-            <div class="pet-image">
-              <p-image
-                src="https://www.purina.co.uk/sites/default/files/styles/ttt_image_original/public/2020-12/Understanding%20Your%20Cat%27s%20Body%20LanguageHERO.webp?itok=W8bF8KSm"
-                width="96"
-                height="96"
-              >
-              </p-image>
+    <div class="content">
+      <h3>Pets</h3>
+
+      <div class="pets-container">
+        @for (pet of tutorData?.pets; track pet.id) {
+          <p-button
+            [link]="true"
+            (onClick)="handlePetClick(pet.id)"
+          >
+            <div class="pet-block">
+              <div class="pet-image">
+                <!--              <p-image-->
+                <!--                src="LoginBackground4PawsRose.png"-->
+                <!--                width="280"-->
+                <!--                height="180"-->
+                <!--              >-->
+                <!--              </p-image>-->
+              </div>
+              <b>{{ pet.name }}</b>
             </div>
-            <b>{{ pet.name }}</b>
-          </div>
-        </p-button>
-      }
+          </p-button>
+        }
 
-      <p-button
-        label="Adicionar Pet"
-        [link]="true"
-        icon="pi pi-plus-circle"
-        iconPos="top"
-        class="add-pet-button"
-        (onClick)="handleAddPetButton()"
-      />
+        <div class="add-pet-button">
+          <i class="pi pi-plus-circle" style="font-size: 4rem;"></i>
+          <p-button
+            label="Adicionar Pet"
+            [link]="true"
+            (onClick)="handleAddPetButton()"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </div>
