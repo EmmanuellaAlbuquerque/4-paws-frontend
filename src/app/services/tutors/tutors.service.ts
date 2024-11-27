@@ -3,6 +3,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 import { TutorSearchResponse } from '../../models/TutorSearchResponse';
+import { NewTutorRequest } from '../../models/NewTutorRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,12 @@ export class TutorsService {
 
   tutorExistsByCPF(tutorCpf: string): Observable<HttpResponse<void>> {
     return this.http.get<void>(this.baseUrl + `api/v1/tutors/exists-by-cpf?tutorCpf=${tutorCpf}`, {
+      observe: 'response'
+    });
+  }
+
+  newTutor(newTutorRequest: NewTutorRequest) {
+    return this.http.post<void>(this.baseUrl + 'api/v1/tutors/new', newTutorRequest, {
       observe: 'response'
     });
   }
