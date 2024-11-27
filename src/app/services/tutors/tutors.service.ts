@@ -4,6 +4,7 @@ import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 import { TutorSearchResponse } from '../../models/TutorSearchResponse';
 import { NewTutorRequest } from '../../models/NewTutorRequest';
+import { TutorsListResponse } from '../../models/TutorsListResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,10 @@ export class TutorsService {
 
   getTutorByCPF(tutorCpf: string): Observable<TutorSearchResponse> {
     return this.http.get<TutorSearchResponse>(this.baseUrl + `api/v1/tutors/by-cpf?tutorCpf=${tutorCpf}`);
+  }
+
+  getTutorsList(page: number): Observable<TutorsListResponse> {
+    return this.http.get<TutorsListResponse>(this.baseUrl + `api/v1/tutors?page=${page}`);
   }
 
   tutorExistsByCPF(tutorCpf: string): Observable<HttpResponse<void>> {

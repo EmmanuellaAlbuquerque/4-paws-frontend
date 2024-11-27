@@ -22,3 +22,8 @@ input {
 .message-error {
   color: var(--red-600);
 }
+
+.title {
+  border-left: 8px solid var(--primary-color);
+  padding-left: 1rem;
+}

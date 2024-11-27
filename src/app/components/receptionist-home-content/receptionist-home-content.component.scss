@@ -1,7 +1,12 @@
 $layout-mobile: 768px;
 
 .receptionist-container {
-  //border: 1px solid red;
+  display: grid;
+  place-items: center;
+}
+
+.receptionist-container .receptionist-content {
+  width: 80%;
 }
 
 .container-content {
@@ -10,6 +15,7 @@ $layout-mobile: 768px;
   align-items: center;
 
   margin-top: 4rem;
+  margin-bottom: 5rem;
 }
 
 .container-content input {
@@ -17,9 +23,13 @@ $layout-mobile: 768px;
   width: 60%;
 }
 
+.tutors-list {
+  margin-top: 1rem;
+}
+
 :host ::ng-deep .receptionist-container .p-element .p-button-outlined {
   /* topo | direita | inferior | esquerda */
-  margin: 5rem 0 0 5rem;
+  //margin: 5rem 0 0 5rem;
 }
 
 @media (max-width: $layout-mobile) {
