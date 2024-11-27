@@ -15,16 +15,29 @@ $subtitle: #8F9BA8;
   width: 100%;
 }
 
+.address-subinfo {
+  display: flex;
+}
+
 #number {
   margin-right: 1rem;
 }
 
+.tutor-form-container .form-content p-floatLabel, .address-subinfo p-floatLabel  {
+  margin-top: 2rem;
+  margin-right: 1rem;
+}
+
 .tutor-form-container .form-content input {
-  margin-top: 1rem;
+  width: 100%;
 }
 
 .create-tutor-button {
-  margin-top: 1rem;
+  margin-top: 2rem;
+}
+
+:host ::ng-deep .create-tutor-button button {
+  width: 100%;
 }
 
 h3 {

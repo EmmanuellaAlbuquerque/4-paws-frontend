@@ -18,3 +18,7 @@ input {
 .subtitle {
   color: $subtitle;
 }
+
+.message-error {
+  color: var(--red-600);
+}

@@ -3,65 +3,88 @@
 
   <div class="form-content">
 
+    @if (hasAnyErrors) {
+      <div class="message-error">
+        <h3>Erros:</h3>
+        @for (error of errors | keyvalue; track error.key) {
+          <p>{{ error.value | titlecase }} </p>
+        }
+      </div>
+    }
+
     <h3>Dados pessoais do Tutor</h3>
     <p-divider />
-    <input
-      id="name"
-      type="text"
-      formControlName="name"
-      placeholder="Nome"
-      pInputText
-      required
-    />
 
-    <input
-      id="phone"
-      type="tel"
-      formControlName="phone"
-      placeholder="Telefone"
-      pInputText
-      required
-    />
+    <p-floatLabel>
+      <input
+        id="name"
+        type="text"
+        formControlName="name"
+        pInputText
+        required
+      />
+      <label for="name">Nome</label>
+    </p-floatLabel>
 
-    <input
-      id="cpf"
-      type="text"
-      formControlName="cpf"
-      placeholder="CPF"
-      pInputText
-      required
-    />
+    <p-floatLabel>
+      <input
+        id="phone"
+        type="tel"
+        formControlName="phone"
+        pInputText
+        required
+      />
+      <label for="phone">Celular</label>
+    </p-floatLabel>
+
+    <p-floatLabel>
+      <input
+        id="cpf"
+        type="text"
+        formControlName="cpf"
+        pInputText
+        required
+      />
+      <label for="cpf">CPF</label>
+    </p-floatLabel>
 
     <h3>Endereço</h3>
     <p-divider />
     <div class="form-content address-content" formGroupName="address">
-      <input
-        id="street"
-        type="text"
-        formControlName="street"
-        placeholder="Rua"
-        pInputText
-        required
-      />
 
-      <div>
+      <p-floatLabel>
         <input
-          id="number"
-          type="number"
-          formControlName="number"
-          placeholder="Número"
-          pInputText
-          required
-        />
-
-        <input
-          id="neighborhood"
+          id="street"
           type="text"
-          formControlName="neighborhood"
-          placeholder="Bairro"
+          formControlName="street"
           pInputText
           required
         />
+        <label for="street">Rua</label>
+      </p-floatLabel>
+
+      <div class="address-subinfo">
+        <p-floatLabel>
+          <input
+            id="number"
+            type="number"
+            formControlName="number"
+            pInputText
+            required
+          />
+          <label for="number">Número</label>
+        </p-floatLabel>
+
+        <p-floatLabel>
+          <input
+            id="neighborhood"
+            type="text"
+            formControlName="neighborhood"
+            pInputText
+            required
+          />
+          <label for="neighborhood">Bairro</label>
+        </p-floatLabel>
       </div>
     </div>
 

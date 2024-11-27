@@ -20,7 +20,7 @@
           <div class="message-error">
             <h3>Erros:</h3>
             @for (error of errors | keyvalue; track error.key) {
-              {{ error.value }}
+              <p>{{ error.value }}</p>
             }
           </div>
         }

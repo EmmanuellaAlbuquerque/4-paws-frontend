@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { AfterViewInit, Component, inject, OnInit } from '@angular/core';
 import { HomeContentComponent } from '../../interfaces/home-content-component';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
@@ -6,8 +6,12 @@ import { ButtonModule } from 'primeng/button';
 import { TutorsService } from '../../services/tutors/tutors.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MessagesModule } from 'primeng/messages';
-import { Message } from 'primeng/api';
-import { Router } from '@angular/router';
+import { Message, MessageService } from 'primeng/api';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastModule } from 'primeng/toast';
+import { MessageStatus } from '../../models/MessageStatus';
+import { LocationStrategy } from '@angular/common';
+import { NavigationState } from 'primeng/calendar';
 
 @Component({
   selector: 'app-receptionist-home-content',
@@ -16,12 +20,14 @@ import { Router } from '@angular/router';
     InputTextModule,
     FormsModule,
     ButtonModule,
-    MessagesModule
+    MessagesModule,
+    ToastModule
   ],
+  providers: [MessageService],
   templateUrl: './receptionist-home-content.component.html',
   styleUrl: './receptionist-home-content.component.scss'
 })
-export class ReceptionistHomeContentComponent implements HomeContentComponent, OnInit {
+export class ReceptionistHomeContentComponent implements HomeContentComponent, OnInit, AfterViewInit {
 
   tutorCPF: string = '';
   tutorResponseErrorStatus: boolean = false;
@@ -34,8 +40,30 @@ export class ReceptionistHomeContentComponent implements HomeContentComponent, O
   private navigator: Router = inject(Router);
   private tutorsService: TutorsService = inject(TutorsService);
 
+  constructor(private messageService: MessageService, private location: LocationStrategy) {}
+
   ngOnInit(): void {
     this.loadContent();
+  }
+
+  ngAfterViewInit() {
+    const state = this.location.getState();
+
+    if (state && (state as { message: MessageStatus, navigationId: number })) {
+
+      const statusResponse = state as { message: MessageStatus, navigationId: number };
+      const message = statusResponse.message;
+
+      if (message.content.length > 0) {
+        console.log(message);
+        this.messageService.add(
+          {
+            severity: message.status,
+            summary: message.status?.toUpperCase(),
+            detail: message.content
+          });
+      }
+    }
   }
 
   loadContent(): void {
