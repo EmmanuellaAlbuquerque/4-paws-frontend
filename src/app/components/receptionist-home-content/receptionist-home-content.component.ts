@@ -58,4 +58,8 @@ export class ReceptionistHomeContentComponent implements HomeContentComponent, O
       }
     })
   }
+
+  handleRegisterTutorClick(): void {
+    this.navigator.navigate([`/tutors/new`]);
+  }
 }

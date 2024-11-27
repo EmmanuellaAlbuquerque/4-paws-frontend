@@ -1,0 +1,38 @@
+$subtitle: #8F9BA8;
+
+.tutor-form-container {
+  display: grid;
+  place-items: center;
+}
+
+.tutor-form-container .form-content {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+
+.tutor-form-container .address-content {
+  width: 100%;
+}
+
+#number {
+  margin-right: 1rem;
+}
+
+.tutor-form-container .form-content input {
+  margin-top: 1rem;
+}
+
+.create-tutor-button {
+  margin-top: 1rem;
+}
+
+h3 {
+  color: $subtitle;
+  font-weight: lighter;
+  margin-bottom: 0;
+}
+
+:host ::ng-deep .p-divider {
+  margin: 0.5rem 0;
+}

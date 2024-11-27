@@ -1,0 +1,75 @@
+<form [formGroup]="tutorForm" (ngSubmit)="onSubmit()" class="tutor-form-container">
+  <h2>Cadastre um Tutor</h2>
+
+  <div class="form-content">
+
+    <h3>Dados pessoais do Tutor</h3>
+    <p-divider />
+    <input
+      id="name"
+      type="text"
+      formControlName="name"
+      placeholder="Nome"
+      pInputText
+      required
+    />
+
+    <input
+      id="phone"
+      type="tel"
+      formControlName="phone"
+      placeholder="Telefone"
+      pInputText
+      required
+    />
+
+    <input
+      id="cpf"
+      type="text"
+      formControlName="cpf"
+      placeholder="CPF"
+      pInputText
+      required
+    />
+
+    <h3>Endereço</h3>
+    <p-divider />
+    <div class="form-content address-content" formGroupName="address">
+      <input
+        id="street"
+        type="text"
+        formControlName="street"
+        placeholder="Rua"
+        pInputText
+        required
+      />
+
+      <div>
+        <input
+          id="number"
+          type="number"
+          formControlName="number"
+          placeholder="Número"
+          pInputText
+          required
+        />
+
+        <input
+          id="neighborhood"
+          type="text"
+          formControlName="neighborhood"
+          placeholder="Bairro"
+          pInputText
+          required
+        />
+      </div>
+    </div>
+
+    <p-button
+      class="create-tutor-button"
+      (onClick)="onSubmit()"
+      label="Cadastrar Tutor"
+      [disabled]="tutorForm.invalid"
+    />
+  </div>
+</form>
