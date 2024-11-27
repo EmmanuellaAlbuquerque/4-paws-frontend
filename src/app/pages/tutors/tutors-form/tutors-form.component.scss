@@ -28,7 +28,8 @@ $subtitle: #8F9BA8;
   margin-right: 1rem;
 }
 
-.tutor-form-container .form-content input {
+.tutor-form-container .form-content input,
+:host ::ng-deep .tutor-form-container .form-content p-inputMask input {
   width: 100%;
 }
 

@@ -12,6 +12,7 @@ import { Error } from '../../../models/Error';
 import { KeyValuePipe, TitleCasePipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { FloatLabelModule } from 'primeng/floatlabel';
+import { InputMaskModule } from 'primeng/inputmask';
 
 @Component({
   selector: 'app-tutors-form',
@@ -24,7 +25,8 @@ import { FloatLabelModule } from 'primeng/floatlabel';
     DividerModule,
     KeyValuePipe,
     TitleCasePipe,
-    FloatLabelModule
+    FloatLabelModule,
+    InputMaskModule
   ],
   templateUrl: './tutors-form.component.html',
   styleUrl: './tutors-form.component.scss'
