@@ -68,6 +68,7 @@ export class TutorsFormComponent implements OnInit {
               state: {
                 message: {
                   status: 'success',
+                  summary: 'sucesso',
                   content: 'Tutor criado com sucesso!'
                 }
               }

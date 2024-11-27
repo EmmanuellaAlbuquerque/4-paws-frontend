@@ -5,13 +5,13 @@ import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { TutorsService } from '../../services/tutors/tutors.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { MessagesModule } from 'primeng/messages';
+import { Messages, MessagesModule } from 'primeng/messages';
 import { Message, MessageService } from 'primeng/api';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastModule } from 'primeng/toast';
 import { MessageStatus } from '../../models/MessageStatus';
 import { LocationStrategy } from '@angular/common';
-import { NavigationState } from 'primeng/calendar';
+import { MessageServiceState } from '../../models/MessageServiceState';
 
 @Component({
   selector: 'app-receptionist-home-content',
@@ -49,17 +49,17 @@ export class ReceptionistHomeContentComponent implements HomeContentComponent, O
   ngAfterViewInit() {
     const state = this.location.getState();
 
-    if (state && (state as { message: MessageStatus, navigationId: number })) {
+    if (state && (state as MessageServiceState)) {
 
-      const statusResponse = state as { message: MessageStatus, navigationId: number };
-      const message = statusResponse.message;
+      const statusResponse = state as MessageServiceState;
+      const message: MessageStatus = statusResponse.message;
 
       if (message.content.length > 0) {
         console.log(message);
         this.messageService.add(
           {
             severity: message.status,
-            summary: message.status?.toUpperCase(),
+            summary: message.summary?.toUpperCase(),
             detail: message.content
           });
       }
