@@ -17,6 +17,7 @@ import { TutorsListResponse } from '../../models/TutorsListResponse';
 import { Tutor } from '../../models/Tutor';
 import { AppointmentsService } from '../../services/appointments/appointments.service';
 import { TutorsListComponent } from '../../shared/tutors-list/tutors-list.component';
+import { AppointmentsListComponent } from '../../shared/appointments-list/appointments-list.component';
 
 @Component({
   selector: 'app-receptionist-home-content',
@@ -28,7 +29,8 @@ import { TutorsListComponent } from '../../shared/tutors-list/tutors-list.compon
     MessagesModule,
     ToastModule,
     TableModule,
-    TutorsListComponent
+    TutorsListComponent,
+    AppointmentsListComponent
   ],
   providers: [MessageService],
   templateUrl: './receptionist-home-content.component.html',
@@ -46,7 +48,6 @@ export class ReceptionistHomeContentComponent implements HomeContentComponent, O
   ];
   private navigator: Router = inject(Router);
   private tutorsService: TutorsService = inject(TutorsService);
-  private appointmentsService: AppointmentsService = inject(AppointmentsService);
 
   constructor(private messageService: MessageService, private location: LocationStrategy) {}
 
@@ -76,7 +77,6 @@ export class ReceptionistHomeContentComponent implements HomeContentComponent, O
 
   loadContent(): void {
     console.log('Load Content RECEPTIONIST');
-    this.loadAppointmentsPagination();
   }
 
   handleTutorSearch(): void {
@@ -92,17 +92,6 @@ export class ReceptionistHomeContentComponent implements HomeContentComponent, O
       error: (error: HttpErrorResponse) => {
         console.log(error);
         this.tutorResponseErrorStatus = true;
-      }
-    })
-  }
-
-  loadAppointmentsPagination() {
-    this.appointmentsService.getAllAppointments().subscribe({
-      next: response => {
-        console.log(response);
-      },
-      error: (error: HttpErrorResponse) => {
-        console.log(error);
       }
     })
   }
