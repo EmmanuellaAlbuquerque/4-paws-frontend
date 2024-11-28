@@ -1,0 +1,45 @@
+<div class="tutors-list">
+  <p-button
+    type="button"
+    icon="pi pi-chevron-left"
+    (onClick)="prev()"
+    [disabled]="isFirstPage()"
+    styleClass="p-button-text"
+  />
+  <p-button
+    label="Carregar +"
+    type="button"
+    icon="pi pi-chevron-right"
+    (onClick)="next()"
+    [disabled]="isLastPage()"
+    styleClass="p-button-text"
+  />
+</div>
+<div class="card">
+  <p-table
+    [value]="tutors"
+    [paginator]="true"
+    [rows]=10
+    [first]="first"
+    [showCurrentPageReport]="true"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    styleClass="p-datatable-striped"
+    [currentPageReportTemplate]="'Mostrando de ' + (first + 1) + ' a ' + (first + 10) + ' dos ' + totalRecords + ' tutores'"
+    (onPage)="pageChange($event)"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width:25%; color: var(--primary-color);">Nome</th>
+        <th style="width:25%; color: var(--primary-color);">Celular</th>
+        <th style="width:25%; color: var(--primary-color);">CPF</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-tutor>
+      <tr>
+        <td>{{ tutor.name }}</td>
+        <td>{{ tutor.phone }}</td>
+        <td>{{ tutor.cpf }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
