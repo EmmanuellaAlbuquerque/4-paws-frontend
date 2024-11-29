@@ -35,6 +35,10 @@ export const routes: Routes = [
     component: TutorsFormComponent
   },
   {
+    path: 'tutors/edit',
+    component: TutorsFormComponent
+  },
+  {
     path: 'pets',
     component: PetComponent
   },

@@ -57,6 +57,14 @@ export class TutorComponent implements OnInit {
     this.navigator.navigate(['pets/new'])
   }
 
+  handleEditTutor() {
+    this.navigator.navigate(['tutors/edit/'], {
+      queryParams: {
+        tutorId: this.tutorData?.id
+      }
+    })
+  }
+
   handlePetClick(petId: string): void {
     this.navigator.navigate([`/pets`], {
       queryParams: {

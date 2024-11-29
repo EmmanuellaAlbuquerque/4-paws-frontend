@@ -1,5 +1,5 @@
 <form [formGroup]="tutorForm" (ngSubmit)="onSubmit()" class="tutor-form-container">
-  <h2>Cadastre um Tutor</h2>
+  <h2>{{ action }} um Tutor</h2>
 
   <div class="form-content">
 
@@ -91,7 +91,7 @@
     <p-button
       class="create-tutor-button"
       (onClick)="onSubmit()"
-      label="Cadastrar Tutor"
+      label="{{ buttonAction }} Tutor"
       [disabled]="tutorForm.invalid"
     />
   </div>
