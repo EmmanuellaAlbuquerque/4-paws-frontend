@@ -5,7 +5,7 @@ import { ButtonModule } from 'primeng/button';
 import { Ripple } from 'primeng/ripple';
 import { DividerModule } from 'primeng/divider';
 import { TutorsService } from '../../../services/tutors/tutors.service';
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { NewTutorRequest } from '../../../models/NewTutorRequest';
 import { ErrorResponse } from '../../../models/ErrorResponse';
 import { Error } from '../../../models/Error';
@@ -15,6 +15,7 @@ import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputMaskModule } from 'primeng/inputmask';
 import { TutorSearchResponse } from '../../../models/TutorSearchResponse';
 import { EditTutorRequest } from '../../../models/EditTutorRequest';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-tutors-form',
@@ -109,54 +110,44 @@ export class TutorsFormComponent implements OnInit {
   saveTutor() {
     const newTutorRequest: NewTutorRequest = this.tutorForm.value;
 
-    this.tutorService.newTutor(newTutorRequest).subscribe(
-      {
-        next: (response) => {
-          console.log(response);
-          this.navigator.navigate(['/'], {
-            state: {
-              message: {
-                status: 'success',
-                summary: 'sucesso',
-                content: 'Tutor criado com sucesso!'
-              }
-            }
-          });
-        },
-        error: (error: HttpErrorResponse) => {
-          const errorResponse: ErrorResponse = error.error as ErrorResponse;
-          this.errors = errorResponse.errors;
-          this.hasAnyErrors = true;
-          console.log(errorResponse);
-        }
-      }
+    this.handleSaveTutor(
+      this.tutorService.newTutor(newTutorRequest),
+      'Tutor criado com sucesso!'
     );
   }
 
   editTutor() {
     const editTutorRequest: EditTutorRequest = this.tutorForm.value;
 
-    this.tutorService.editTutor(editTutorRequest, this.tutorId).subscribe(
-      {
-        next: (response) => {
-          console.log(response);
-          this.navigator.navigate(['/'], {
-            state: {
-              message: {
-                status: 'success',
-                summary: 'sucesso',
-                content: 'Tutor editado com sucesso!'
-              }
-            }
-          });
-        },
-        error: (error: HttpErrorResponse) => {
-          const errorResponse: ErrorResponse = error.error as ErrorResponse;
-          this.errors = errorResponse.errors;
-          this.hasAnyErrors = true;
-          console.log(errorResponse);
-        }
-      }
+    this.handleSaveTutor(
+      this.tutorService.editTutor(editTutorRequest, this.tutorId),
+      'Tutor editado com sucesso!'
     );
+  }
+
+  private handleSaveTutor(
+    serviceMethod: Observable<HttpResponse<void>>,
+    successMessage: string
+  ) {
+    serviceMethod.subscribe({
+      next: (response) => {
+        console.log(response);
+        this.navigator.navigate(['/'], {
+          state: {
+            message: {
+              status: 'success',
+              summary: 'Sucesso',
+              content: successMessage
+            }
+          }
+        });
+      },
+      error: (error: HttpErrorResponse) => {
+        const errorResponse: ErrorResponse = error.error as ErrorResponse;
+        this.errors = errorResponse.errors;
+        this.hasAnyErrors = true;
+        console.log(errorResponse);
+      }
+    });
   }
 }
