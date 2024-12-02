@@ -21,7 +21,7 @@ npm install -g @angular/cli
 # verifica versão em uso do angular cli
 ng version
 
-# faz o clone do projetk
+# faz o clone do projeto
 git clone git@github.com:EmmanuellaAlbuquerque/4-paws-frontend.git
 # entra na pasta do projeto
 cd 4-paws-frontend
