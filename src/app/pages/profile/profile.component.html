@@ -16,18 +16,19 @@
       <p class="profile-field">
         <b>
           <i class="pi pi-briefcase"></i>
-          Cargo:
         </b>
-       <span>{{ profile?.role }}</span>
+       <span>
+         <p><strong>Cargo:</strong> {{ profile?.role }}</p>
+
+         @if(profile?.role === 'VETERINARIO') {
+           <p><b>Especialidade:</b> {{ profile?.specialty }}</p>
+
+           <p><b>CRMV:</b> {{ profile?.crmv }}</p>
+
+           <p><b>UF:</b> {{ profile?.uf }}</p>
+         }
+       </span>
       </p>
-
-      @if(profile?.role === 'VETERINARIO') {
-        <p><b>Especialidade:</b> {{ profile?.specialty }}</p>
-
-        <p><b>CRMV:</b> {{ profile?.crmv }}</p>
-
-        <p><b>UF:</b> {{ profile?.uf }}</p>
-      }
 
       <p class="profile-field">
         <b>
