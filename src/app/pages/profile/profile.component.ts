@@ -6,6 +6,7 @@ import { ButtonModule } from 'primeng/button';
 import { Router } from '@angular/router';
 import { GoBackButtonComponent } from '../../shared/go-back-button/go-back-button.component';
 import { AvatarModule } from 'primeng/avatar';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -22,6 +23,7 @@ export class ProfileComponent implements OnInit {
 
   profile: ProfileResponse | null = null;
   private profileService: ProfileService = inject(ProfileService);
+  private authService: AuthService = inject(AuthService);
   private navigator: Router = inject(Router);
 
   ngOnInit(): void {
@@ -38,7 +40,7 @@ export class ProfileComponent implements OnInit {
     );
   }
 
-  handleGoBack(): void {
-    this.navigator.navigate(['']);
+  handleLogout(): void {
+    this.authService.logout();
   }
 }

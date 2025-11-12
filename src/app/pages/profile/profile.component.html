@@ -1,5 +1,4 @@
 <div class="profile-container">
-  <div>
     <div class="profile-header">
       <app-go-back-button />
         <h1>
@@ -45,6 +44,12 @@
         </b>
         {{ profile?.email }}
       </p>
-    </div>
+
+      <p-button
+        icon="pi pi-sign-out"
+        label="Sair"
+        [text]="true"
+        (onClick)="handleLogout()"
+      />
     </div>
 </div>
