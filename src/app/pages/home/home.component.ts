@@ -8,6 +8,8 @@ import { RoleComponentMappingService } from '../../services/role-component-mappi
 import { HomeContentComponent } from '../../interfaces/home-content-component';
 import { ImageModule } from 'primeng/image';
 import { AvatarModule } from 'primeng/avatar';
+import { ProblemDetail } from '../../models/ProblemDetail';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -25,6 +27,7 @@ export class HomeComponent implements OnInit {
 
   profile: ProfileResponse | null = null;
   private profileService: ProfileService = inject(ProfileService);
+  private authService: AuthService = inject(AuthService);
   homeContentComponentByRole: Type<HomeContentComponent> | null = null;
 
   constructor(
@@ -45,7 +48,10 @@ export class HomeComponent implements OnInit {
           this.homeContentComponentByRole = this.roleMapService.getComponentForRole(this.profile.role);
         },
         error: (error: HttpErrorResponse) => {
-          console.log(error);
+          console.log(this.isLoginRevoked(error));
+          if(this.isLoginRevoked(error)) {
+            this.authService.logout();
+          }
         }
       }
     );
@@ -53,5 +59,10 @@ export class HomeComponent implements OnInit {
 
   handleProfileClick(): void {
     this.navigator.navigate(['profile']);
+  }
+
+  isLoginRevoked(error: HttpErrorResponse): boolean {
+    const problemDetail = error.error as ProblemDetail;
+    return error.status == 403 && problemDetail.properties.errorCode === 'LOGIN_REVOKED';
   }
 }

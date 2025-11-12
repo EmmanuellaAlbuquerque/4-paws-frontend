@@ -83,7 +83,6 @@ export class LoginComponent {
         error: (error: HttpErrorResponse) => {
           const errorResponse: ErrorResponse = error.error as ErrorResponse;
           this.errors = errorResponse.errors;
-          console.log(errorResponse);
           this.hasAnyErrors = true;
           this.loading = false;
         }

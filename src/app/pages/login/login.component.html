@@ -18,7 +18,6 @@
 
         @if (hasAnyErrors) {
           <div class="message-error">
-            <h3>Erros:</h3>
             @for (error of errors | keyvalue; track error.key) {
               <p>{{ error.value }}</p>
             }
@@ -52,13 +51,16 @@
 
         <p-button class="forget-password" label="Esqueceu a senha?" [link]="true" />
 
-        <p-button
+        <button
+          pButton
+          type="button"
           class="login-button"
-          [loading]="loading"
-          (onClick)="onSubmit()"
-          label="Login"
-          [disabled]="loginForm.invalid"
-        />
+          [disabled]="loginForm.invalid || loading"
+          (click)="onSubmit()"
+          aria-label="Login"
+        >
+          <ng-container>Login</ng-container>
+        </button>
       </div>
     </div>
   </div>
