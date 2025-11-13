@@ -49,6 +49,7 @@ export class TutorComponent implements OnInit {
       },
       error: (error: HttpErrorResponse) => {
         console.log(error);
+        this.navigator.navigate(['not-found'])
       }
     });
   }

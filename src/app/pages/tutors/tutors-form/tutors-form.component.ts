@@ -132,7 +132,10 @@ export class TutorsFormComponent implements OnInit {
     serviceMethod.subscribe({
       next: (response) => {
         console.log(response);
-        this.navigator.navigate(['/'], {
+        this.navigator.navigate(['tutors/'], {
+          queryParams: {
+            cpf: this.tutorForm.get('cpf')?.value
+          },
           state: {
             message: {
               status: 'success',
