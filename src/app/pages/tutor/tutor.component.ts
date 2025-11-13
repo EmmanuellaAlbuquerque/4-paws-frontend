@@ -55,7 +55,11 @@ export class TutorComponent implements OnInit {
   }
 
   handleAddPetButton(): void {
-    this.navigator.navigate(['pets/new'])
+    this.navigator.navigate(['pets/new'], {
+      queryParams: {
+        tutorId: this.tutorData?.id
+      }
+    });
   }
 
   handleEditTutor() {
@@ -63,7 +67,7 @@ export class TutorComponent implements OnInit {
       queryParams: {
         tutorId: this.tutorData?.id
       }
-    })
+    });
   }
 
   handlePetClick(petId: string): void {

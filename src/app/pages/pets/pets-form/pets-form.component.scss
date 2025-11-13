@@ -1,0 +1,45 @@
+$subtitle: #8F9BA8;
+
+.pet-form-container {
+  display: grid;
+  place-items: center;
+}
+
+.pet-form-container .form-content {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+
+#number {
+  margin-right: 1rem;
+}
+
+.pet-form-container .form-content p-floatLabel, .pet-form-container p-dropdown  {
+  margin-top: 2rem;
+  margin-right: 1rem;
+}
+
+.pet-form-container .form-content input,
+:host ::ng-deep .pet-form-container .form-content p-inputMask input,
+.pet-form-container p-dropdown {
+  width: 100%;
+}
+
+.create-pet-button {
+  margin-top: 2rem;
+}
+
+:host ::ng-deep .create-pet-button button {
+  width: 100%;
+}
+
+h3 {
+  color: $subtitle;
+  font-weight: lighter;
+  margin-bottom: 0;
+}
+
+:host ::ng-deep .p-divider {
+  margin: 0.5rem 0;
+}

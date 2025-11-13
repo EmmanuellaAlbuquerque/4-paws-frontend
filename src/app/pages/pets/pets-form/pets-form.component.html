@@ -1,0 +1,82 @@
+<form [formGroup]="petForm" (ngSubmit)="onSubmit()" class="pet-form-container">
+  <h2>{{ action }} um Pet</h2>
+
+  <div class="form-content">
+
+    @if (hasAnyErrors) {
+      <div class="message-error">
+        <h3>Erros:</h3>
+        @for (error of errors | keyvalue; track error.key) {
+          <p>{{ error.value | titlecase }} </p>
+        }
+      </div>
+    }
+
+    <h3>Dados pessoais do Pet</h3>
+    <p-divider />
+
+    <p-floatLabel>
+      <input
+        id="name"
+        type="text"
+        formControlName="name"
+        pInputText
+        required
+      />
+      <label for="name">Nome</label>
+    </p-floatLabel>
+
+    <p-floatLabel>
+      <input
+        id="weight"
+        type="number"
+        formControlName="weight"
+        pInputText
+        required
+      />
+      <label for="name">Peso</label>
+    </p-floatLabel>
+
+    <p-dropdown
+      formControlName="selectedGender"
+      [options]="genders"
+      optionLabel="name"
+      placeholder="Selecione o Gênero"
+    />
+
+    <p-floatLabel>
+      <input
+        id="breed"
+        type="text"
+        formControlName="breed"
+        pInputText
+        required
+      />
+      <label for="name">Raça</label>
+    </p-floatLabel>
+
+    <p-dropdown
+      formControlName="selectedSpecie"
+      [options]="species"
+      optionLabel="name"
+      placeholder="Selecione a Espécie"
+    />
+
+    <p-floatLabel>
+      <p-calendar
+        id="birthDate"
+        formControlName="birthDate"
+        dateFormat="dd/mm/yy"
+        showIcon="true"
+      ></p-calendar>
+      <label for="birthDate">Data de Nascimento</label>
+    </p-floatLabel>
+
+    <p-button
+      class="create-pet-button"
+      (onClick)="onSubmit()"
+      label="{{ buttonAction }} Pet"
+      [disabled]="petForm.invalid"
+    />
+  </div>
+</form>
