@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
-import { PrimeNGConfig } from 'primeng/api';
+import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { MenubarModule } from "primeng/menubar";
 import { ImageModule } from 'primeng/image';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoginComponent, MenubarModule, ImageModule],
+  imports: [RouterOutlet, LoginComponent, MenubarModule, ImageModule, ToastModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

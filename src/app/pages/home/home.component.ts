@@ -48,9 +48,9 @@ export class HomeComponent implements OnInit {
           this.homeContentComponentByRole = this.roleMapService.getComponentForRole(this.profile.role);
         },
         error: (error: HttpErrorResponse) => {
-          console.log(this.isLoginRevoked(error));
+          this.authService.logout();
           if(this.isLoginRevoked(error)) {
-            this.authService.logout();
+            // this.authService.logout();
           }
         }
       }

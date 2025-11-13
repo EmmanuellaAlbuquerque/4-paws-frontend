@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { AfterViewInit, Component, inject, OnInit } from '@angular/core';
 import { TutorsService } from '../../services/tutors/tutors.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -6,9 +6,10 @@ import { GoBackButtonComponent } from '../../shared/go-back-button/go-back-butto
 import { TutorSearchResponse } from '../../models/TutorSearchResponse';
 import { Button } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
-import { UpperCasePipe } from '@angular/common';
+import { LocationStrategy, UpperCasePipe } from '@angular/common';
 import { ImageModule } from 'primeng/image';
 import { AvatarModule } from 'primeng/avatar';
+import { MessageHandlerService } from '../../shared/message-handler/message-handler.service';
 
 @Component({
   selector: 'app-tutor',
@@ -24,14 +25,15 @@ import { AvatarModule } from 'primeng/avatar';
   templateUrl: './tutor.component.html',
   styleUrl: './tutor.component.scss'
 })
-export class TutorComponent implements OnInit {
+export class TutorComponent implements OnInit, AfterViewInit {
 
   private cpf: string = '';
   tutorData?: TutorSearchResponse;
   private tutorService: TutorsService = inject(TutorsService);
   private navigator: Router = inject(Router);
+  private messageHandler = inject(MessageHandlerService);
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private location: LocationStrategy, private route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => {
       this.cpf = params['cpf'];
     });
@@ -39,6 +41,10 @@ export class TutorComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTutor();
+  }
+
+  ngAfterViewInit() {
+    this.messageHandler.handleNavigationMessage();
   }
 
   getTutor(): void {

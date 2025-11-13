@@ -1,23 +1,16 @@
-import { AfterViewInit, Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { HomeContentComponent } from '../../interfaces/home-content-component';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { TutorsService } from '../../services/tutors/tutors.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Messages, MessagesModule } from 'primeng/messages';
-import { Message, MessageService } from 'primeng/api';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ToastModule } from 'primeng/toast';
-import { MessageStatus } from '../../models/MessageStatus';
-import { LocationStrategy } from '@angular/common';
-import { MessageServiceState } from '../../models/MessageServiceState';
+import { Message } from 'primeng/api';
+import { Router } from '@angular/router';
 import { TableModule } from 'primeng/table';
-import { TutorsListResponse } from '../../models/TutorsListResponse';
-import { Tutor } from '../../models/Tutor';
-import { AppointmentsService } from '../../services/appointments/appointments.service';
 import { TutorsListComponent } from '../../shared/tutors-list/tutors-list.component';
 import { AppointmentsListComponent } from '../../shared/appointments-list/appointments-list.component';
+import { MessagesModule } from 'primeng/messages';
 
 @Component({
   selector: 'app-receptionist-home-content',
@@ -26,17 +19,15 @@ import { AppointmentsListComponent } from '../../shared/appointments-list/appoin
     InputTextModule,
     FormsModule,
     ButtonModule,
-    MessagesModule,
-    ToastModule,
     TableModule,
     TutorsListComponent,
-    AppointmentsListComponent
+    AppointmentsListComponent,
+    MessagesModule
   ],
-  providers: [MessageService],
   templateUrl: './receptionist-home-content.component.html',
   styleUrl: './receptionist-home-content.component.scss'
 })
-export class ReceptionistHomeContentComponent implements HomeContentComponent, OnInit, AfterViewInit {
+export class ReceptionistHomeContentComponent implements HomeContentComponent, OnInit {
 
   tutorCPF: string = '';
   tutorResponseErrorStatus: boolean = false;
@@ -49,30 +40,8 @@ export class ReceptionistHomeContentComponent implements HomeContentComponent, O
   private navigator: Router = inject(Router);
   private tutorsService: TutorsService = inject(TutorsService);
 
-  constructor(private messageService: MessageService, private location: LocationStrategy) {}
-
   ngOnInit(): void {
     this.loadContent();
-  }
-
-  ngAfterViewInit() {
-    const state = this.location.getState();
-
-    if (state && (state as MessageServiceState)) {
-
-      const statusResponse = state as MessageServiceState;
-      const message: MessageStatus = statusResponse.message;
-
-      if (message.content.length > 0) {
-        console.log(message);
-        this.messageService.add(
-          {
-            severity: message.status,
-            summary: message.summary?.toUpperCase(),
-            detail: message.content
-          });
-      }
-    }
   }
 
   loadContent(): void {
