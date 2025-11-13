@@ -1,4 +1,4 @@
-export type NewPetRequest = {
+export type PetRequest = {
   name: string;
   weight: number;
   sex: string;

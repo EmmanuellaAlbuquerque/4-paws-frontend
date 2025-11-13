@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PetsService } from '../../services/pets/pets.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { PetResponse } from '../../models/PetResponse';
@@ -31,7 +31,7 @@ export class PetComponent implements OnInit {
   private petService: PetsService = inject(PetsService);
   items: MenuItem[] | undefined;
 
-  constructor(private route: ActivatedRoute, private location: Location) {
+  constructor(private route: ActivatedRoute, private location: Location, private navigator: Router) {
     this.route.queryParams.subscribe(params => {
       this.petId = params['petId'];
     });
@@ -46,7 +46,7 @@ export class PetComponent implements OnInit {
       next: response => {
         console.log(response);
         this.petData = response;
-        this.initializeMenu();
+        // this.initializeMenu();
       },
       error: (error: HttpErrorResponse) => {
         console.log(error);
@@ -54,31 +54,39 @@ export class PetComponent implements OnInit {
     })
   }
 
-  private initializeMenu() {
-    this.items = [
-      {
-        label: 'Voltar',
-        icon: 'pi pi-arrow-left',
-        command: () => {
-          this.location.back();
-        }
-      },
-      {
-        label: 'Cadastrar Consulta',
-        icon: 'pi pi-calendar-plus',
-        routerLink: '/appointments',
-        queryParams: {
-          petId: this.petData?.id,
-          tutorId: this.petData?.tutorId
-        },
-        queryParamsHandling: 'replace'
-      },
-      {
-        label: 'Editar Dados',
-        icon: 'pi pi-star',
-        routerLink: '/pets/edit',
-        queryParamsHandling: 'preserve'
+  handleEditPet() {
+    this.navigator.navigate(['pets/edit/'], {
+      queryParams: {
+        petId: this.petId
       }
-    ];
+    });
   }
+
+  // private initializeMenu() {
+  //   this.items = [
+  //     {
+  //       label: 'Voltar',
+  //       icon: 'pi pi-arrow-left',
+  //       command: () => {
+  //         this.location.back();
+  //       }
+  //     },
+  //     {
+  //       label: 'Cadastrar Consulta',
+  //       icon: 'pi pi-calendar-plus',
+  //       routerLink: '/appointments',
+  //       queryParams: {
+  //         petId: this.petData?.id,
+  //         tutorId: this.petData?.tutorId
+  //       },
+  //       queryParamsHandling: 'replace'
+  //     },
+  //     {
+  //       label: 'Editar Dados',
+  //       icon: 'pi pi-star',
+  //       routerLink: '/pets/edit',
+  //       queryParamsHandling: 'preserve'
+  //     }
+  //   ];
+  // }
 }

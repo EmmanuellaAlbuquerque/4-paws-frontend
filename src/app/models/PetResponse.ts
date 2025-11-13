@@ -7,4 +7,5 @@ export type PetResponse = {
   specie: string;
   age: number;
   tutorId: string;
+  birthDate: string;
 }

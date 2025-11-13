@@ -52,7 +52,12 @@
         </div>
       </div>
 
-      <p-button label="Editar dados" class="edit-pet-button" icon="pi pi-pen-to-square" />
+      <p-button
+        label="Editar dados"
+        class="edit-pet-button"
+        icon="pi pi-pen-to-square"
+        (onClick)="handleEditPet()"
+      />
     </div>
 
     <h2 class="title">Consultas</h2>

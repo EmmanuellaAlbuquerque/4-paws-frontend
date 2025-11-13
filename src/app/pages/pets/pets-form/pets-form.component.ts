@@ -11,7 +11,7 @@ import { Error } from '../../../models/Error';
 import { PetsService } from '../../../services/pets/pets.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DropdownModule } from 'primeng/dropdown';
-import { NewPetRequest } from '../../../models/NewPetRequest';
+import { PetRequest } from '../../../models/PetRequest';
 import { CalendarModule } from 'primeng/calendar';
 import { Observable } from 'rxjs';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
@@ -19,10 +19,12 @@ import { ErrorResponse } from '../../../models/ErrorResponse';
 
 interface Gender {
   name: string;
+  value: string;
 }
 
 interface Specie {
   name: string;
+  value: string;
 }
 
 @Component({
@@ -56,8 +58,8 @@ export class PetsFormComponent implements OnInit {
   action: string = 'Cadastre';
   buttonAction: string = 'Cadastrar';
 
-  genders: Gender[] | undefined;
-  species: Specie[] | undefined;
+  genders: Gender[];
+  species: Specie[];
 
   constructor(private fb: FormBuilder, private navigator: Router, private route: ActivatedRoute) {
     this.petForm = this.fb.group({
@@ -71,9 +73,19 @@ export class PetsFormComponent implements OnInit {
 
     this.errors = {};
 
+    this.genders = [
+      { name: 'Macho', value: 'MACHO' },
+      { name: 'Fêmea', value: 'FEMEA' }
+    ];
+
+    this.species = [
+      { name: 'Felina', value: 'FELINA' },
+      { name: 'Canina', value: 'CANINA' },
+    ];
+
     this.route.queryParams.subscribe(params => {
       this.petId = params['petId'];
-      this.tutorId = params['tutorId'];
+      this.tutorId = params['tutorId']
     })
   }
 
@@ -83,30 +95,22 @@ export class PetsFormComponent implements OnInit {
       this.action = 'Edite';
       this.buttonAction = 'Editar';
     }
-
-    this.genders = [
-      { name: 'FEMEA' },
-      { name: 'MACHO' }
-    ];
-
-    this.species = [
-      { name: 'FELINA' },
-      { name: 'CANINA' }
-    ];
   }
 
   loadPetData() {
     this.petService.getPetById(this.petId).subscribe({
       next: response => {
         console.log(response);
+        this.tutorId = response.tutorId;
+        console.log(this.tutorId);
 
         this.petForm.patchValue({
           name: response.name,
           weight: response.weight,
-          sex: response.sex,
           breed: response.breed,
-          specie: response.specie,
-          age: response.age
+          birthDate: new Date(response.birthDate),
+          selectedGender: this.findSelectOptionByName(this.genders, response.sex),
+          selectedSpecie: this.findSelectOptionByName(this.species, response.specie)
         })
       },
       error: error => {
@@ -121,9 +125,19 @@ export class PetsFormComponent implements OnInit {
         this.savePet();
       }
       else {
-        // this.editPet();
+        this.editPet();
       }
     }
+  }
+
+  editPet() {
+    const editPetRequest: PetRequest = this.mapToNewPetRequest();
+    console.log(editPetRequest);
+
+    this.handleEditPet(
+      this.petService.editPet(editPetRequest, this.petId),
+      'Pet editado com sucesso!'
+    );
   }
 
   savePet() {
@@ -136,7 +150,7 @@ export class PetsFormComponent implements OnInit {
     );
   }
 
-  private mapToNewPetRequest(): NewPetRequest {
+  private mapToNewPetRequest(): PetRequest {
     const formValue = this.petForm.value;
 
     return {
@@ -144,8 +158,8 @@ export class PetsFormComponent implements OnInit {
       weight: formValue.weight,
       breed: formValue.breed,
       birthDate: formValue.birthDate ? new Date(formValue.birthDate).toISOString().split('T')[0] : '',
-      sex: formValue.selectedGender?.name ?? '',
-      specie: formValue.selectedSpecie?.name ?? '',
+      sex: formValue.selectedGender?.value ?? '',
+      specie: formValue.selectedSpecie?.value ?? '',
       tutorId: this.tutorId
     };
   }
@@ -186,8 +200,42 @@ export class PetsFormComponent implements OnInit {
     });
   }
 
+  private handleEditPet(
+    serviceMethod: Observable<HttpResponse<void>>,
+    successMessage: string
+  ) {
+    serviceMethod.subscribe({
+      next: (response) => {
+        console.log(response);
+
+        this.navigator.navigate(['pets/'], {
+          queryParams: {
+            petId: this.petId
+          },
+          state: {
+            message: {
+              status: 'success',
+              summary: 'Sucesso',
+              content: successMessage
+            }
+          }
+        });
+      },
+      error: (error: HttpErrorResponse) => {
+        const errorResponse: ErrorResponse = error.error as ErrorResponse;
+        this.errors = errorResponse.errors;
+        this.hasAnyErrors = true;
+        console.log(errorResponse);
+      }
+    });
+  }
+
   private extractPetIdFromLocation(location: string): string {
     const parts = location.split('/');
     return parts[parts.length - 1];
+  }
+
+  private findSelectOptionByName(list: any[], value: string) {
+    return list.find(item => item.name.toLowerCase() === value.toLowerCase());
   }
 }

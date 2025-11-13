@@ -48,6 +48,10 @@ export const routes: Routes = [
     component: PetsFormComponent
   },
   {
+    path: 'pets/edit',
+    component: PetsFormComponent
+  },
+  {
     path: 'appointments',
     component: AppointmentsFormComponent
   },

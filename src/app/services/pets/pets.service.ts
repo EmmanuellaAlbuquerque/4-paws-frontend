@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 import { PetResponse } from '../../models/PetResponse';
-import { NewPetRequest } from '../../models/NewPetRequest';
+import { PetRequest } from '../../models/PetRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +19,14 @@ export class PetsService {
     return this.http.get<PetResponse>(this.baseUrl + `api/v1/pets/${petId}`);
   }
 
-  newPet(newPetRequest: NewPetRequest) {
+  newPet(newPetRequest: PetRequest) {
     return this.http.post<void>(this.baseUrl + 'api/v1/pets/new', newPetRequest, {
+      observe: 'response'
+    });
+  }
+
+  editPet(editPetRequest: PetRequest, petId: string) {
+    return this.http.put<void>(this.baseUrl + `api/v1/pets/${petId}`, editPetRequest, {
       observe: 'response'
     });
   }
